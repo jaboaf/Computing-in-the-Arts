@@ -1,0 +1,2 @@
+# ignore all files with .pdf extention, you can override locally
+*.pdf
