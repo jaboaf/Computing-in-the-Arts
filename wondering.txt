@@ -1,0 +1,18 @@
+?how much larger are orchestras specified in orchestral compostions
+ than the smallest orchsestra needed to play all the parts?
+ .does Four Organs by Steve Riech require four organs?
+ >read sheet music of orchestral compositions (non-solos)
+  determine lower bound on orchestera composition
+  under listed assumptions of phyical contraints of instruments
+  .playing a note on the piano and playing the same one,
+   before the inital one elapses and without interrupting it,
+   nessesitates two pianos.
+ 202306280910
+?do keys pressed with the same velocity
+  'last' the ~same~ amount of time?
+  @ no.
+  yield sounds with the ~same~ volume?
+  @ if vol measured ind. of pitch, perhaps. in practice no, because perceptually no
+  202306280910
+?all sounds set in the same medium have the same speed?
+@ no. learn electromagnetism. (electromagnetic waves)

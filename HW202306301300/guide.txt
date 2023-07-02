@@ -1,0 +1,11 @@
+.txt files in /Falling Up use carrige return (0d) and line feed (0a)
+	carrige return (0d) indicates returning the carrige
+	line feed (0a) to indicates feeding a line
+[BEWARE
+Feeding a feeding lion,
+feeds a feeding lion. 
+A feeding lion feeding,
+may be a feeding feeding lion.
+Or may be just a lion feeding,
+at the lion feeder feast.
+BYJOJO]
