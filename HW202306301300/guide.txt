@@ -1,11 +1,44 @@
-.txt files in /Falling Up use carrige return (0d) and line feed (0a)
-	carrige return (0d) indicates returning the carrige
-	line feed (0a) to indicates feeding a line
-[BEWARE
+.txt files in /Falling Up
+ use carrige return (0d) and line feed (0a)
+  carrige-return (0d) indicates returning the carrige
+  line-feed (0a) to indicates feeding a line
+ dont have any adjacent 0a bytes see[^Beware]
+
+
+                                                 up here
+plz feed me!                      and coulda been       but what about
+            here you go      there
+                       that's                                         this?
+
+            then i guess this makes sense to read
+if thats ok!                                            is this it? or 
+                                                 and now
+
+
+
+Lionel: please feed me!
+                       pretty please!
+                                     i'll even do a carrige return
+                                     pretty please
+                                     and that's gotta go there
+                                     and it's downhill from here :(
+                                     wait
+                                         no it its not             if we
+                                         we can go uphill from here     want
+Coachman:
+         Lionel, hunny,
+         It'll be okay
+         Jenny says, I'm on my way
+         She'll be home in a few
+Colophon:
+fuck
+
+
+[BEWARE:
 Feeding a feeding lion,
 feeds a feeding lion. 
 A feeding lion feeding,
 may be a feeding feeding lion.
-Or may be just a lion feeding,
+Or maybe just a lion feeding,
 at the lion feeder feast.
 BYJOJO]
