@@ -1,0 +1,17 @@
+WAV file form
+
+https://www.aelius.com/njh/wavemetatools/doc/riffmci.pdf
+http://midi.teragonaudio.com/tech/wave.htm
+
+<fmt-ck>
+	"fmt " chunkID (ascii string)
+	long chunkSize (in number of bytes)
+	short wFormatTag (0x0001 for WAVE_FORMAT_PCM)
+	short wChannels (number of channels)
+	long dwSamplesPerSec 
+	long dwAvgBytesPerSec
+	short wBlockAlign (bytes per frame)
+	short wBitsPerSample
+
+
+https://fluidsynth.sourceforge.net/api/index.html

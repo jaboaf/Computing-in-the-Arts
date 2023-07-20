@@ -1,0 +1,47 @@
+WAV
+* Specs
+  * https://en.wikipedia.org/wiki/WAV#Specification
+  * http://midi.teragonaudio.com/tech/wave.htm
+
+Sound Files
+* https://www.ee.columbia.edu/~dpwe/sounds/instruments/
+* Note (freq): G3 (196 Hz), C4 (261 Hz), G4 (392 Hz), C5 (523 Hz), G5 (784 Hz), C6 (1046 Hz), G6 (1568 Hz)
+ 	* piano-(G3|(C|G)(4|5|6))
+ 	* violin-(C|G)(4|5|6)
+	* flute-(C|G)(4|5|6)
+	* trumpet-(G3|(C|G)(4|5)|C6)
+* https://theremin.music.uiowa.edu/index.html
+* Soundfont
+
+https://pjb.com.au/midi/index.html
+https://gitlab.com/peterbillam/miditools
+https://freepats.zenvoid.org/sf2/sfapp21.pdf
+
+David Cope
+http://artsites.ucsc.edu/faculty/cope/bibliography.htm
+
+Synthfont
+http://www.synthfont.com/sfspec24.pdf
+
+https://musiclab.chromeexperiments.com/
+
+ARDOUR
+https://github.com/FluidSynth/fluidsynth/wiki/FluidFeatures
+
+[signal](https://ccrma.stanford.edu/~jos/filters/Definition_Signal.html)
+[analytic signal](https://ccrma.stanford.edu/~jos/r320/Analytic_Signals_Hilbert_Transform.html)
+
+https://www.google.com/books/edition/Sound_Synthesis_and_Sampling/X9h5AgAAQBAJ?hl=en&gbpv=1&pg=PA29&printsec=frontcover
+
+key board stuff
+https://www.instructables.com/Hacking-a-USB-Keyboard/
+https://rocamatics.wordpress.com/2016/01/27/poor-mans-moog-taurus-with-caustic/
+
+Music DSP
+https://www.musicdsp.org/en/latest/index.html
+
+Note Freqs
+https://pages.mtu.edu/~suits/notefreqs.html
+
+https://computermusicresource.com/index.html
+https://computermusicresource.com/midikeys.html

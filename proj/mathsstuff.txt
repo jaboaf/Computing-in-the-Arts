@@ -1,0 +1,36 @@
+# maths stuff
+a record :[n]->C interpreted as a looping :Z/nZ->C
+hence, a class function
+
+Z/pZ has p representations of degree 1, Hom(Z/pZ,GL~1~(C))
+extend each rep, r, to C^Z/pZ^ by  f->\sum_t in Z/pZ_ f(t)r(t)
+extend each class function, f, by  r->\sum_t in Z/pZ_ f(t)r(t)
+hence, p f = trace( \sum_r in Hom(Z/pZ,GL~1~(C))_ f(r)r^*^ )
+
+when |n|>1 not prime
+ Z/nZ ~ Z/aZ x Z/bZ for some |a|,|b|>1
+ so
+  |n|=|a||b|
+  Hom(Z/nZ,GL~1~(C)) ~ Hom(Z/aZ x Z/bZ,GL~1~(C)) ~ Hom(Z/aZ,GL~1~(C)) T Hom(Z/bZ,GL~1~(C))
+  	T stands for \bigotimes
+  	interpreting GL~1~(C) as embedded in M~1~(C), a ring with + and t (\littleotimes); acting on left, on a VS that is a right C module 
+ anyways,
+  if c in Hom(Z/aZ,GL~1~(C)) and d in Hom(Z/bZ,GL~1~(C)) are irreducible reps, then c t d is.
+  if e in Hom(Z/aZ x Z/bZ,GL~1~(C)) is irreducible, it is iso to c t d for some c in Hom(Z/aZ,GL~1~(C)), d in Hom(Z/bZ,GL~1~(C)).
+ in any case,
+  characters are the same: trace(c t d) = trace(c)trace(d) and trace is a class function.
+ if a is not prime, apply decomposition to Hom(Z/aZ,GL~1~(C)).
+ if b is not prime, apply decomposition to Hom(Z/bZ,GL~1~(C)).
+ otherwise have a party i guess, maybe arrange the components some way that makes you happy.
+
+point is, that-
+ if you have a function on Z/nZ, 
+
+
+
+
+
+
+
+
+

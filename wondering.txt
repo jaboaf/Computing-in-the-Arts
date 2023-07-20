@@ -16,3 +16,5 @@
   202306280910
 ?all sounds set in the same medium have the same speed?
 @ no. learn electromagnetism. (electromagnetic waves)
+?how do gadgets convert audio to bits?
+?how do gadgets convert bits to audio?

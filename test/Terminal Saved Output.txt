@@ -1,0 +1,3602 @@
+Last login: Tue Jul 11 12:32:15 on ttys001
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+dhcp-vl2041-41367:~ EricAboaf$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.5.3 (2020-11-09)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+(@v1.5) pkg> add WAV
+   Updating registry at `~/.julia/registries/General`
+   Updating git-repo `https://github.com/JuliaRegistries/General.git`
+  Resolving package versions...
+  Installed WAV ─ v1.2.0
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [8149f6b0] + WAV v1.2.0
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [8149f6b0] + WAV v1.2.0
+
+julia> exit()
+dhcp-vl2041-41367:~ EricAboaf$ cd Desktop/Jojo/GitHub/Computing-in-the-Arts/test
+dhcp-vl2041-41367:test EricAboaf$ pwd
+/Users/EricAboaf/Desktop/Jojo/GitHub/Computing-in-the-Arts/test
+dhcp-vl2041-41367:test EricAboaf$ ls
+CantinaBand3.wav	test_doxy.mid		thermo.wav
+dhcp-vl2041-41367:test EricAboaf$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.5.3 (2020-11-09)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia> using WAV
+[ Info: Precompiling WAV [8149f6b0-98f6-5db9-b78f-408fbbb8ef88]
+
+julia> y, fs, nbits, opt = wavread("CantinaBand3.wav")
+([9.155552842799158e-5; 0.00021362956633198035; … ; -0.013031403546250802; -0.006927701651051363], 22050.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> wavplay(y)
+ERROR: MethodError: no method matching wavplay(::Array{Float64,2})
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+Stacktrace:
+ [1] top-level scope at REPL[3]:1
+
+julia> wavplay(y,fs)
+
+julia> wavplay(y,fs)
+
+julia> wavplay(y,fs)
+
+julia> opt
+1-element Array{WAVChunk,1}:
+ WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])
+
+julia> opt[1]
+WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])
+
+julia> opt[1].id
+Symbol("fmt ")
+
+julia> fs
+22050.0f0
+
+julia> wavplay(y,fs/2)
+
+julia> using Plots
+[ Info: Precompiling Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80]
+ 
+julia> plot(y)
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> typeof(y)
+Array{Float64,2}
+
+julia> size(y)
+(66150, 1)
+
+julia> nbits
+0x0010
+
+julia> nbits |> Int
+16
+
+julia> unique(y)
+8159-element Array{Float64,1}:
+  9.155552842799158e-5
+  0.00021362956633198035
+  0.0
+  0.00015259254737998596
+  0.00012207403790398877
+  6.103701895199438e-5
+ -3.051850947599719e-5
+ -6.103701895199438e-5
+  3.051850947599719e-5
+ -0.00012207403790398877
+  ⋮
+  0.06894131290627765
+  0.06543168431653798
+ -0.07568590350047304
+ -0.08865627002777185
+ -0.09305093539231545
+ -0.07855464339121677
+ -0.08328501235999634
+ -0.08523819696646016
+  0.07193212683492538
+
+julia> 2^16
+65536
+
+help?> convert
+search: convert code_native @code_native
+
+  convert(T, x)
+
+  Convert x to a value of type T.
+
+  If T is an Integer type, an InexactError will be raised if x is not
+  representable by T, for example if x is not integer-valued, or is outside
+  the range supported by T.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> convert(Int, 3.0)
+  3
+  
+  julia> convert(Int, 3.5)
+  ERROR: InexactError: Int64(3.5)
+  Stacktrace:
+  [...]
+
+  If T is a AbstractFloat or Rational type, then it will return the closest
+  value to x representable by T.
+
+  julia> x = 1/3
+  0.3333333333333333
+  
+  julia> convert(Float32, x)
+  0.33333334f0
+  
+  julia> convert(Rational{Int32}, x)
+  1//3
+  
+  julia> convert(Rational{Int64}, x)
+  6004799503160661//18014398509481984
+
+  If T is a collection type and x a collection, the result of convert(T, x)
+  may alias all or part of x.
+
+  julia> x = Int[1, 2, 3];
+  
+  julia> y = convert(Vector{Int}, x);
+  
+  julia> y === x
+  true
+
+julia> Float16
+Float16
+
+help?> convert(Float16,y[1])
+  convert(T, x)
+
+  Convert x to a value of type T.
+
+  If T is an Integer type, an InexactError will be raised if x is not
+  representable by T, for example if x is not integer-valued, or is outside
+  the range supported by T.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> convert(Int, 3.0)
+  3
+  
+  julia> convert(Int, 3.5)
+  ERROR: InexactError: Int64(3.5)
+  Stacktrace:
+  [...]
+
+  If T is a AbstractFloat or Rational type, then it will return the closest
+  value to x representable by T.
+
+  julia> x = 1/3
+  0.3333333333333333
+  
+  julia> convert(Float32, x)
+  0.33333334f0
+  
+  julia> convert(Rational{Int32}, x)
+  1//3
+  
+  julia> convert(Rational{Int64}, x)
+  6004799503160661//18014398509481984
+
+  If T is a collection type and x a collection, the result of convert(T, x)
+  may alias all or part of x.
+
+  julia> x = Int[1, 2, 3];
+  
+  julia> y = convert(Vector{Int}, x);
+  
+  julia> y === x
+  true
+
+julia> convert(Float16,y[1])
+Float16(9.155e-5)
+
+help?> Float64
+search: Float64 Float16 Float32 float floatmin floatmax Cfloat BigFloat
+
+  Float64(x [, mode::RoundingMode])
+
+  Create a Float64 from x. If x is not exactly representable then mode
+  determines how x is rounded.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> Float64(pi, RoundDown)
+  3.141592653589793
+  
+  julia> Float64(pi, RoundUp)
+  3.1415926535897936
+
+  See RoundingMode for available rounding modes.
+
+  ────────────────────────────────────────────────────────────────────────────
+
+  Float64 <: AbstractFloat
+
+  64-bit floating point number type (IEEE 754 standard).
+
+  Binary format: 1 sign, 11 exponent, 52 fraction bits.
+
+julia> propertynames(Float64)
+(:name, :super, :parameters, :types, :names, :instance, :layout, :size, :ninitialized, :hash, :abstract, :mutable, :hasfreetypevars, :isconcretetype, :isdispatchtuple, :isbitstype, :zeroinit, :isinlinealloc, :has_concrete_subtype)
+
+julia> fieldnames(Float64)
+()
+
+julia> propertynames(y[1])
+()
+
+julia> fieldnames(y[1])
+ERROR: MethodError: no method matching fieldnames(::Float64)
+Closest candidates are:
+  fieldnames(::Core.TypeofBottom) at reflection.jl:175
+  fieldnames(::Type{var"#s9"} where var"#s9"<:Tuple) at reflection.jl:177
+  fieldnames(::DataType) at reflection.jl:172
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[26]:1
+
+julia> fieldnames(1//2)
+ERROR: MethodError: no method matching fieldnames(::Rational{Int64})
+Closest candidates are:
+  fieldnames(::Core.TypeofBottom) at reflection.jl:175
+  fieldnames(::Type{var"#s9"} where var"#s9"<:Tuple) at reflection.jl:177
+  fieldnames(::DataType) at reflection.jl:172
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[27]:1
+
+julia> names(1//2)
+ERROR: MethodError: no method matching names(::Rational{Int64})
+Closest candidates are:
+  names(::Module; all, imported) at reflection.jl:98
+Stacktrace:
+ [1] top-level scope at REPL[28]:1
+
+julia> propertynames(1//2)
+(:num, :den)
+
+julia> propertynames(y[1])
+()
+
+julia> y[1]
+9.155552842799158e-5
+
+julia> 0 in y
+true
+
+julia> Float64.instance
+ERROR: UndefRefError: access to undefined reference
+Stacktrace:
+ [1] getproperty(::Type{T} where T, ::Symbol) at ./Base.jl:28
+ [2] top-level scope at REPL[33]:1
+
+julia> Float64.parameters
+svec()
+
+julia> Float64.names
+ERROR: UndefRefError: access to undefined reference
+Stacktrace:
+ [1] getproperty(::Type{T} where T, ::Symbol) at ./Base.jl:28
+ [2] top-level scope at REPL[35]:1
+
+help?> bit
+search: BitSet bitstring bitrotate BitArray bitreverse BitVector BitMatrix
+
+Couldn't find bit
+Perhaps you meant big, nbits, bind, bar, cbrt, opt, gif, pie, with, edit or Cint
+  No documentation found.
+
+  Binding bit does not exist.
+
+help?> exponent
+search: exponent ExponentialBackOff
+
+  exponent(x) -> Int
+
+  Get the exponent of a normalized floating-point number.
+
+julia> exponent(y[1])
+-14
+
+julia> y[1]
+9.155552842799158e-5
+
+help?> fraction
+search: Fractional
+
+Couldn't find fraction
+Perhaps you meant function, Fractional, Function or @cfunction
+  No documentation found.
+
+  Binding fraction does not exist.
+
+help?> fractional
+search: Fractional
+
+Couldn't find fractional
+Perhaps you meant Fractional, Irrational, Rational or factorial
+  No documentation found.
+
+  Binding fractional does not exist.
+
+help?> Fractional
+search: Fractional
+
+  No documentation found.
+
+  ColorTypes.Fractional is of type Union.
+
+  Summary
+  ≡≡≡≡≡≡≡≡≡
+
+  struct Union <: Type{T}
+
+  Fields
+  ≡≡≡≡≡≡≡≡
+
+  a :: Any
+  b :: Any
+
+  Supertype Hierarchy
+  ≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡≡
+
+  Union <: Type{T} <: Any
+
+julia> u = unique(y)
+8159-element Array{Float64,1}:
+  9.155552842799158e-5
+  0.00021362956633198035
+  0.0
+  0.00015259254737998596
+  0.00012207403790398877
+  6.103701895199438e-5
+ -3.051850947599719e-5
+ -6.103701895199438e-5
+  3.051850947599719e-5
+ -0.00012207403790398877
+  ⋮
+  0.06894131290627765
+  0.06543168431653798
+ -0.07568590350047304
+ -0.08865627002777185
+ -0.09305093539231545
+ -0.07855464339121677
+ -0.08328501235999634
+ -0.08523819696646016
+  0.07193212683492538
+
+julia> u.|>exponent|>unique
+ERROR: DomainError with 0.0:
+Cannot be subnormal converted to 0.
+Stacktrace:
+ [1] (::Base.Math.var"#throw2#4")(::Float64) at ./math.jl:784
+ [2] exponent at ./math.jl:789 [inlined]
+ [3] |> at ./operators.jl:834 [inlined]
+ [4] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [5] _broadcast_getindex at ./broadcast.jl:621 [inlined]
+ [6] getindex at ./broadcast.jl:575 [inlined]
+ [7] macro expansion at ./broadcast.jl:932 [inlined]
+ [8] macro expansion at ./simdloop.jl:77 [inlined]
+ [9] copyto! at ./broadcast.jl:931 [inlined]
+ [10] copyto! at ./broadcast.jl:886 [inlined]
+ [11] copy at ./broadcast.jl:862 [inlined]
+ [12] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1},Nothing,typeof(|>),Tuple{Array{Float64,1},Base.RefValue{typeof(exponent)}}}) at ./broadcast.jl:837
+ [13] top-level scope at REPL[44]:1
+
+julia> u.|>exponent
+ERROR: DomainError with 0.0:
+Cannot be subnormal converted to 0.
+Stacktrace:
+ [1] (::Base.Math.var"#throw2#4")(::Float64) at ./math.jl:784
+ [2] exponent at ./math.jl:789 [inlined]
+ [3] |> at ./operators.jl:834 [inlined]
+ [4] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [5] _broadcast_getindex at ./broadcast.jl:621 [inlined]
+ [6] getindex at ./broadcast.jl:575 [inlined]
+ [7] macro expansion at ./broadcast.jl:932 [inlined]
+ [8] macro expansion at ./simdloop.jl:77 [inlined]
+ [9] copyto! at ./broadcast.jl:931 [inlined]
+ [10] copyto! at ./broadcast.jl:886 [inlined]
+ [11] copy at ./broadcast.jl:862 [inlined]
+ [12] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{1},Nothing,typeof(|>),Tuple{Array{Float64,1},Base.RefValue{typeof(exponent)}}}) at ./broadcast.jl:837
+ [13] top-level scope at REPL[45]:1
+
+julia> nbits
+0x0010
+
+julia> methods(wavplay)
+# 2 methods for generic function "wavplay":
+[1] wavplay(fname::AbstractString) in WAV at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+[2] wavplay(data::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, fs::Real) in WAV.WAVPlay at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+
+julia> WAV.getformat(opt)
+WAVFormat(0x0001, 0x0001, 0x00005622, 0x0000ac44, 0x0002, 0x0010, WAVFormatExtension(0x0000, 0x00000000, UInt8[]))
+
+julia> y, fs, nbits, opt = wavread("CantinaBand3.wav",format="native")
+(Int16[3; 7; … ; -427; -227], 22050.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> plot(y)
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> typeof(y)
+Array{Int16,2}
+
+julia> nbits
+0x0010
+
+julia> convert(UInt16,y[1])
+0x0003
+
+julia> y[1]
+3
+
+julia> convert(UInt16,Int16(-322))
+ERROR: InexactError: check_top_bit(UInt16, -322)
+Stacktrace:
+ [1] throw_inexacterror(::Symbol, ::Type{UInt16}, ::Int16) at ./boot.jl:558
+ [2] check_top_bit at ./boot.jl:572 [inlined]
+ [3] toUInt16 at ./boot.jl:659 [inlined]
+ [4] UInt16 at ./boot.jl:711 [inlined]
+ [5] convert(::Type{UInt16}, ::Int16) at ./number.jl:7
+ [6] top-level scope at REPL[55]:1
+
+julia> UInt16(Int16(-322))
+ERROR: InexactError: check_top_bit(UInt16, -322)
+Stacktrace:
+ [1] throw_inexacterror(::Symbol, ::Type{UInt16}, ::Int16) at ./boot.jl:558
+ [2] check_top_bit at ./boot.jl:572 [inlined]
+ [3] toUInt16 at ./boot.jl:659 [inlined]
+ [4] UInt16(::Int16) at ./boot.jl:711
+ [5] top-level scope at REPL[56]:1
+
+julia> opt
+1-element Array{WAVChunk,1}:
+ WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])
+
+julia> opt[1]
+WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x22, 0x56, 0x00, 0x00, 0x44, 0xac, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])
+
+julia> opt[1].data
+20-element Array{UInt8,1}:
+ 0x10
+ 0x00
+ 0x00
+ 0x00
+ 0x01
+ 0x00
+ 0x01
+ 0x00
+ 0x22
+ 0x56
+ 0x00
+ 0x00
+ 0x44
+ 0xac
+ 0x00
+ 0x00
+ 0x02
+ 0x00
+ 0x10
+ 0x00
+
+julia> opt[1].data[1:4]
+4-element Array{UInt8,1}:
+ 0x10
+ 0x00
+ 0x00
+ 0x00
+
+julia> opt[1].data[5:6]
+2-element Array{UInt8,1}:
+ 0x01
+ 0x00
+
+julia> opt[1].data[7:8]
+2-element Array{UInt8,1}:
+ 0x01
+ 0x00
+
+julia> opt[1].data[9:12]
+4-element Array{UInt8,1}:
+ 0x22
+ 0x56
+ 0x00
+ 0x00
+
+julia> Int(0x56)
+86
+
+julia> Int(0x56)*256
+22016
+
+julia> Int(0x56)*256 + Int(0x22)
+22050
+
+julia> Fs
+ERROR: UndefVarError: Fs not defined
+
+julia> fs
+22050.0f0
+
+julia> opt[1].data[13:16]
+4-element Array{UInt8,1}:
+ 0x44
+ 0xac
+ 0x00
+ 0x00
+
+julia> [1 256] * Int.(opt[1].data[13:16][1:2])
+1-element Array{Int64,1}:
+ 44100
+
+julia> opt[1].data[17:18]
+2-element Array{UInt8,1}:
+ 0x02
+ 0x00
+
+julia> opt[1].data[19:20]
+2-element Array{UInt8,1}:
+ 0x10
+ 0x00
+
+julia> pwd
+pwd (generic function with 1 method)
+
+julia> pwd()
+"/Users/EricAboaf/Desktop/Jojo/GitHub/Computing-in-the-Arts/test"
+
+julia> y, fs, nbits, opt = wavread("piano-C5.wav",format="native")
+(Int16[-13; -19; … ; -9; -8], 11025.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x11, 0x2b, 0x00, 0x00, 0x22, 0x56, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> scatter(y)
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> plot(y)
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> wavpl
+ERROR: UndefVarError: wavpl not defined
+
+julia> wavplay(y,fs)
+
+julia> wavplay(y,fs/2)
+
+julia> 
+
+julia> wavplay(y,2*fs)
+
+julia> wavplay(y,fs)
+
+julia> wavplay("piano-C5.wav")
+
+julia> wavplay("piano-C4.wav")
+
+julia> wavplay("piano-C6.wav")
+
+help?> wavplay
+search: wavplay
+
+  wavplay(data, fs)
+  wavplay(filename::AbstractString)
+
+  Plays the audio waveform data at sampling frequency fs (in hertz). To play a
+  stereo signal, provide two columns in array data (left and right channel),
+  as in wavwrite.
+
+  The filename form reads both waveform data and sampling frequency from the
+  named WAV file to play it.
+
+  The supported backends are:
+
+    •    AudioQueue (macOS)
+
+    •    PulseAudio (Linux, libpulse-simple)
+
+    •    PlaySound (Windows)
+
+  See also: wavwrite
+
+julia> wavplay(y,fs)
+
+julia> wavplay(y,fs/2)
+
+julia> wavplay("piano-C4.wav")
+
+julia> wavplay(y,fs/2)
+
+julia> wavplay(y,2*fs)
+
+julia> wavplay("piano-C6.wav")
+
+julia> 2/3/2
+0.3333333333333333
+
+julia> wavplay("piano-C6.wav")
+
+julia> wavplay(zeros(Int16,11025),11025)
+
+julia> wavplay(ones(Int16,11025),11025)
+
+julia> wavplay(100*ones(Int16,11025),11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,1}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,1}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[97]:1
+
+julia> wavplay("trumpet-C5.wav")
+
+julia> plot(wavread("trumpet-C5.wav")[1])
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> plot(wavread("trumpet-C5.wav")[1])
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> ones(Int16)
+0-dimensional Array{Int16,0}:
+1
+
+julia> ones(Int16,100)
+100-element Array{Int16,1}:
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ ⋮
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+ 1
+
+julia> plot(wavread("trumpet-C5.wav",format="native")[1])
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> histogram(wavread("trumpet-C5.wav",format="native")[1])
+
+julia> sin.(1:11000)
+11000-element Array{Float64,1}:
+  0.8414709848078965
+  0.9092974268256817
+  0.1411200080598672
+ -0.7568024953079282
+ -0.9589242746631385
+ -0.27941549819892586
+  0.6569865987187891
+  0.9893582466233818
+  0.4121184852417566
+ -0.5440211108893698
+  ⋮
+  0.419318867206404
+ -0.5373612439958044
+ -0.9999939056366143
+ -0.5432367821432948
+  0.4129697335877934
+  0.9894937807657671
+  0.6562818091920616
+ -0.28031263115419636
+ -0.9591889311452169
+
+julia> sin.(1:11000)/2
+11000-element Array{Float64,1}:
+  0.42073549240394825
+  0.45464871341284085
+  0.0705600040299336
+ -0.3784012476539641
+ -0.4794621373315692
+ -0.13970774909946293
+  0.32849329935939453
+  0.4946791233116909
+  0.2060592426208783
+ -0.2720105554446849
+  ⋮
+  0.209659433603202
+ -0.2686806219979022
+ -0.49999695281830714
+ -0.2716183910716474
+  0.2064848667938967
+  0.49474689038288355
+  0.3281409045960308
+ -0.14015631557709818
+ -0.47959446557260843
+
+julia> wavplay(sin.(1:11000)/2,11000)
+
+julia> wavplay(sin.(1:11000)/2,5500)
+
+julia> wavplay("trumpet-C5.wav")
+
+julia> plotlyjs()
+[ Info: Precompiling PlotlyJS [f0f68f2c-4968-5e81-91da-67840de0976a]
+ERROR: ArgumentError: Package ORCA not found in current path:
+- Run `import Pkg; Pkg.add("ORCA")` to install the ORCA package.
+
+Stacktrace:
+ [1] require(::Module, ::Symbol) at ./loading.jl:893
+ [2] top-level scope at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:472
+ [3] eval at ./boot.jl:331 [inlined]
+ [4] _initialize_backend(::Plots.PlotlyJSBackend) at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:471
+ [5] backend at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:176 [inlined]
+ [6] plotlyjs(; kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:33
+ [7] plotlyjs() at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:33
+ [8] top-level scope at REPL[109]:1
+
+(@v1.5) pkg> add ORCA
+   Updating registry at `~/.julia/registries/General`
+   Updating git-repo `https://github.com/JuliaRegistries/General.git`
+  Resolving package versions...
+  Installed ORCA ───────────── v0.5.0
+  Installed InverseFunctions ─ v0.1.11
+  Installed PlotlyBase ─────── v0.4.3
+  Installed PlotlyJS ───────── v0.15.0
+Downloading artifact: plotly-artifacts
+Downloading artifact: kaleido
+Updating `~/.julia/environments/v1.5/Project.toml`
+  [47be7bcc] + ORCA v0.5.0
+  [f0f68f2c] ↓ PlotlyJS v0.18.10 ⇒ v0.15.0
+Updating `~/.julia/environments/v1.5/Manifest.toml`
+  [35d6a980] - ColorSchemes v3.5.0
+  [ffbed154] ↓ DocStringExtensions v0.9.3 ⇒ v0.8.6
+  [3587e190] ↑ InverseFunctions v0.1.10 ⇒ v0.1.11
+  [f7e6163d] - Kaleido_jll v0.1.0+0
+  [47be7bcc] + ORCA v0.5.0
+  [d96e819e] - Parameters v0.12.3
+  [a03496cd] ↓ PlotlyBase v0.8.19 ⇒ v0.4.3
+  [f0f68f2c] ↓ PlotlyJS v0.18.10 ⇒ v0.15.0
+  [3a884ed6] - UnPack v1.0.2
+   Building PlotlyJS → `~/.julia/packages/PlotlyJS/WF333/deps/build.log`
+
+julia> plotlyjs()
+[ Info: Precompiling ORCA [47be7bcc-f1a6-5447-8b36-7eeeff7534fd]
+┌ Warning: Module PlotlyBase with build ID 463694233458059 is missing from the cache.
+│ This may mean PlotlyBase [a03496cd-edff-5a9b-9e67-9cda94a718b5] does not support precompilation but is imported by a module that does.
+└ @ Base loading.jl:1017
+[ Info: Skipping precompilation since __precompile__(false). Importing ORCA [47be7bcc-f1a6-5447-8b36-7eeeff7534fd].
+ERROR: LoadError: UndefVarError: savefig not defined
+Stacktrace:
+ [1] include(::Function, ::Module, ::String) at ./Base.jl:380
+ [2] include at ./Base.jl:368 [inlined]
+ [3] _require(::Base.PkgId) at ./loading.jl:1059
+ [4] require(::Base.PkgId) at ./loading.jl:928
+ [5] require(::Module, ::Symbol) at ./loading.jl:923
+ [6] top-level scope at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:472
+ [7] eval at ./boot.jl:331 [inlined]
+ [8] _initialize_backend(::Plots.PlotlyJSBackend) at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:471
+ [9] backend at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:176 [inlined]
+ [10] plotlyjs(; kw::Base.Iterators.Pairs{Union{},Union{},Tuple{},NamedTuple{(),Tuple{}}}) at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:33
+ [11] plotlyjs() at /Users/EricAboaf/.julia/packages/Plots/8GUYs/src/backends.jl:33
+ [12] top-level scope at REPL[111]:1
+in expression starting at /Users/EricAboaf/.julia/packages/ORCA/U5XaN/src/ORCA.jl:3
+
+julia> exit()
+dhcp-vl2041-41367:test EricAboaf$ julia
+               _
+   _       _ _(_)_     |  Documentation: https://docs.julialang.org
+  (_)     | (_) (_)    |
+   _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
+  | | | | | | |/ _` |  |
+  | | |_| | | | (_| |  |  Version 1.5.3 (2020-11-09)
+ _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
+|__/                   |
+
+julia> using Plots
+[ Info: Precompiling Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80]
+
+julia> plotlyjs()
+[ Info: Precompiling PlotlyJS [f0f68f2c-4968-5e81-91da-67840de0976a]
+[ Info: Precompiling ORCA [47be7bcc-f1a6-5447-8b36-7eeeff7534fd]
+┌ Warning: ORCA.jl has been deprecated and all savefig functionality
+│ has been implemented directly in PlotlyBase itself.
+│ 
+│ By implementing in PlotlyBase.jl, the savefig routines are automatically
+│ available to PlotlyJS.jl also.
+└ @ ORCA ~/.julia/packages/ORCA/U5XaN/src/ORCA.jl:8
+Plots.PlotlyJSBackend()
+
+julia> using WAV
+
+julia> pwd()
+"/Users/EricAboaf/Desktop/Jojo/GitHub/Computing-in-the-Arts/test"
+
+julia> PC4 = wavread("piano-C4.wav")
+([-0.0003051850947599719; -0.0004577776421399579; … ; -0.0004577776421399579; -0.0007324442274239326], 11025.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x11, 0x2b, 0x00, 0x00, 0x22, 0x56, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> PC4[3]
+0x0010
+
+julia> length(PC4[1])
+29750
+
+julia> scatter(PC4[1])
+
+julia> plot()
+
+julia> wavplay(PC4[1][1:PC4[2]])
+ERROR: ArgumentError: invalid index: 1.0f0 of type Float32
+Stacktrace:
+ [1] to_index(::Float32) at ./indices.jl:297
+ [2] to_index(::Array{Float64,2}, ::Float32) at ./indices.jl:274
+ [3] to_indices at ./indices.jl:325 [inlined]
+ [4] to_indices at ./indices.jl:322 [inlined]
+ [5] getindex at ./abstractarray.jl:1060 [inlined]
+ [6] macro expansion at ./multidimensional.jl:772 [inlined]
+ [7] macro expansion at ./cartesian.jl:64 [inlined]
+ [8] macro expansion at ./multidimensional.jl:767 [inlined]
+ [9] _unsafe_getindex! at ./multidimensional.jl:762 [inlined]
+ [10] _unsafe_getindex at ./multidimensional.jl:757 [inlined]
+ [11] _getindex at ./multidimensional.jl:743 [inlined]
+ [12] getindex(::Array{Float64,2}, ::StepRangeLen{Float32,Float64,Float64}) at ./abstractarray.jl:1060
+ [13] top-level scope at REPL[10]:1
+
+julia> wavplay(PC4[1][1:Int(PC4[2])])
+ERROR: MethodError: no method matching wavplay(::Array{Float64,1})
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+Stacktrace:
+ [1] top-level scope at REPL[11]:1
+
+julia> PC4 = wavread("piano-C4.wav")
+([-0.0003051850947599719; -0.0004577776421399579; … ; -0.0004577776421399579; -0.0007324442274239326], 11025.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x11, 0x2b, 0x00, 0x00, 0x22, 0x56, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> wavplay(PC4[1])
+ERROR: MethodError: no method matching wavplay(::Array{Float64,2})
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+Stacktrace:
+ [1] top-level scope at REPL[13]:1
+
+julia> PC4 = wavread("piano-C4.wav",format="native")
+(Int16[-10; -15; … ; -15; -24], 11025.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x11, 0x2b, 0x00, 0x00, 0x22, 0x56, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> wavplay(PC4[1])
+ERROR: MethodError: no method matching wavplay(::Array{Int16,2})
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+Stacktrace:
+ [1] top-level scope at REPL[15]:1
+
+julia> PC4 = wavread("piano-C4.wav");
+
+julia> wavplay(PC4[1],PC4[2])
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],PC4[2])
+
+julia> unique(PC4[1])
+3116-element Array{Float64,1}:
+ -0.0003051850947599719
+ -0.0004577776421399579
+ -0.0004272591326639607
+ -0.0004882961516159551
+ -0.0005188146610919523
+ -0.0003967406231879635
+ -0.0003662221137119663
+ -0.0005493331705679495
+ -0.0005798516800439467
+ -0.0006103701895199438
+  ⋮
+  0.008941923276467178
+ -0.017670216986602375
+ -0.01574755088961455
+  0.011352885525070956
+  0.005859553819391461
+ -0.017242957853938413
+ -0.01467940305795465
+  0.0075380718405713065
+ -0.006866664632099368
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],PC4[2]/2)
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],PC4[2]/3)
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],PC4[2]/4)
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],2*PC4[2])
+
+julia> wavplay(PC4[1][1:Int(PC4[2])],PC4[2]*3/2)
+
+julia> PC5 = wavread("piano-C5.wav");
+
+julia> PC4[1]
+29750×1 Array{Float64,2}:
+ -0.0003051850947599719
+ -0.0004577776421399579
+ -0.0004272591326639607
+ -0.0004577776421399579
+ -0.0004272591326639607
+ -0.0004882961516159551
+ -0.0004577776421399579
+ -0.0004882961516159551
+ -0.0004882961516159551
+ -0.0005188146610919523
+  ⋮
+  0.0007324442274239326
+  0.0011902218695638905
+  0.0013428144169438765
+  0.0011597033600878933
+  0.0006103701895199438
+  3.051850947599719e-5
+ -0.0003357036042359691
+ -0.0004577776421399579
+ -0.0007324442274239326
+
+julia> PC4[2]
+11025.0f0
+
+julia> wavplay(PC4[1][1:11025],11025)
+
+julia> wavplay(PC5[1][1:11025],11025)
+
+julia> 
+
+julia> wavplay(PC5[1][1:11025],11025/2)
+
+julia> wavplay(PC4[1][1:11025],11025)
+
+julia> wavplay(PC4[1][1:11025],11025*2)
+
+julia> wavplay(PC5[1][1:11025],11025)
+
+julia> wavplay(PC4[1][1:11025],11025/2)
+
+julia> wavplay(PC4[1][1:11025],11025/2/2)
+
+julia> wavplay(PC4[1][1:11025],11025/2/2/2)
+
+julia> wavplay(PC5[1][1:11025],11025/2^(1/4))
+
+julia> wavplay(PC4[1][1:11025],11025)
+
+julia> wavplay(PC5[1][1:11025],11025)
+
+julia> wavplay(PC5[1][1:11025],11025)
+
+julia> wavplay(PC4[1][1:11025],11025)
+
+julia> maximum(PC4[1])
+0.07690664387951293
+
+julia> maximum(PC4[1])*2^15
+2520.0769066438797
+
+julia> PC5 = wavread("piano-C5.wav",format="native");
+
+julia> PC4 = wavread("piano-C4.wav",format="native");
+
+julia> maximum(PC4[1])
+2520
+
+julia> maximum(PC5[1])
+1797
+
+julia> typeof(PC4)
+Tuple{Array{Int16,2},Float32,UInt16,Array{WAVChunk,1}}
+
+julia> 2^15
+32768
+
+julia> wavplay( (PC4[1] + PC5[1])[1:11025],11025)
+ERROR: DimensionMismatch("dimensions must match: a has dims (Base.OneTo(29750), Base.OneTo(1)), b has dims (Base.OneTo(19750), Base.OneTo(1)), mismatch at 1")
+Stacktrace:
+ [1] promote_shape at ./indices.jl:178 [inlined]
+ [2] promote_shape at ./indices.jl:169 [inlined]
+ [3] +(::Array{Int16,2}, ::Array{Int16,2}) at ./arraymath.jl:45
+ [4] top-level scope at REPL[49]:1
+
+julia> wavplay( PC4[1][1:11025] + PC5[1][1:11025],11025)
+
+julia> wavplay( PC4[1][1:11025] + PC4[1][130:11155],11025)
+ERROR: DimensionMismatch("dimensions must match: a has dims (Base.OneTo(11025),), b has dims (Base.OneTo(11026),), mismatch at 1")
+Stacktrace:
+ [1] promote_shape at ./indices.jl:178 [inlined]
+ [2] promote_shape at ./indices.jl:169 [inlined]
+ [3] +(::Array{Int16,1}, ::Array{Int16,1}) at ./arraymath.jl:45
+ [4] top-level scope at REPL[51]:1
+
+julia> wavplay( PC4[1][1:11025] + PC4[1][131:11155],11025)
+
+julia> wavplay( PC4[1][1:11025] + PC4[1][131:11155],11025)
+
+julia> wavplay( PC4[1][1:11025] + PC4[1][1+260:11025+260],11025)
+
+julia> wavplay( PC4[1][1:11025] + PC4[1][1+260:11025+260],11025/2)
+
+julia> wavplay( PC4[1][1:11025],11025)
+
+julia> wavplay( PC4[1][1:11025],11025/2)
+
+julia> wavplay( PC4[1][1:11025],11025*2)
+
+julia> gr()
+Plots.GRBackend()
+
+julia> plot(cumsum(PC4[1]))
+ERROR: UndefKeywordError: keyword argument dims not assigned
+Stacktrace:
+ [1] cumsum(::Array{Int16,2}) at ./accumulate.jl:112
+ [2] top-level scope at REPL[59]:1
+
+julia> scatter(cumsum(PC4[1]))
+ERROR: UndefKeywordError: keyword argument dims not assigned
+Stacktrace:
+ [1] cumsum(::Array{Int16,2}) at ./accumulate.jl:112
+ [2] top-level scope at REPL[60]:1
+
+julia> plotlyjs()
+Plots.PlotlyJSBackend()
+
+julia> scatter(cumsum(PC4[1]))
+ERROR: UndefKeywordError: keyword argument dims not assigned
+Stacktrace:
+ [1] cumsum(::Array{Int16,2}) at ./accumulate.jl:112
+ [2] top-level scope at REPL[62]:1
+
+julia> PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+help?> cumsum
+search: cumsum cumsum!
+
+  cumsum(A; dims::Integer)
+
+  Cumulative sum along the dimension dims. See also cumsum! to use a
+  preallocated output array, both for performance and to control the precision
+  of the output (e.g. to avoid overflow).
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> a = [1 2 3; 4 5 6]
+  2×3 Array{Int64,2}:
+   1  2  3
+   4  5  6
+  
+  julia> cumsum(a, dims=1)
+  2×3 Array{Int64,2}:
+   1  2  3
+   5  7  9
+  
+  julia> cumsum(a, dims=2)
+  2×3 Array{Int64,2}:
+   1  3   6
+   4  9  15
+
+  │ Note
+  │
+  │  The return array's eltype is Int for signed integers of less than
+  │  system word size and UInt for unsigned integers of less than
+  │  system word size. To preserve eltype of arrays with small signed
+  │  or unsigned integer accumulate(+, A) should be used.
+  │
+  │  julia> cumsum(Int8[100, 28])
+  │  2-element Array{Int64,1}:
+  │   100
+  │   128
+  │  
+  │  julia> accumulate(+,Int8[100, 28])
+  │  2-element Array{Int8,1}:
+  │    100
+  │   -128
+  │
+  │  In the former case, the integers are widened to system word size
+  │  and therefore the result is Int64[100, 128]. In the latter case,
+  │  no such widening happens and integer overflow results in Int8[100,
+  │  -128].
+
+  ────────────────────────────────────────────────────────────────────────────
+
+  cumsum(itr)
+
+  Cumulative sum an iterator. See also cumsum! to use a preallocated output
+  array, both for performance and to control the precision of the output (e.g.
+  to avoid overflow).
+
+  │ Julia 1.5
+  │
+  │  cumsum on a non-array iterator requires at least Julia 1.5.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> cumsum([1, 1, 1])
+  3-element Array{Int64,1}:
+   1
+   2
+   3
+  
+  julia> cumsum([fill(1, 2) for i in 1:3])
+  3-element Array{Array{Int64,1},1}:
+   [1, 1]
+   [2, 2]
+   [3, 3]
+  
+  julia> cumsum((1, 1, 1))
+  (1, 2, 3)
+  
+  julia> cumsum(x^2 for x in 1:3)
+  3-element Array{Int64,1}:
+    1
+    5
+   14
+
+julia> scatter(cumsum(PC4[1],dims=1))
+
+julia> scatter(cumsum(PC5[1],dims=1))
+
+julia> backends()
+9-element Array{Symbol,1}:
+ :pyplot
+ :unicodeplots
+ :plotly
+ :plotlyjs
+ :gr
+ :pgfplots
+ :pgfplotsx
+ :inspectdr
+ :hdf5
+
+julia> plotly()
+Plots.PlotlyBackend()
+
+julia> scatter(cumsum(PC5[1],dims=1))
+
+julia> gr()
+Plots.GRBackend()
+
+julia> scatter(cumsum(PC5[1],dims=1))
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> scatter(cumsum(PC6[1],dims=1))
+ERROR: UndefVarError: PC6 not defined
+Stacktrace:
+ [1] top-level scope at REPL[72]:1
+
+help?> minmax
+search: minmax DimensionMismatch
+
+  minmax(x, y)
+
+  Return (min(x,y), max(x,y)). See also: extrema that returns (minimum(x),
+  maximum(x)).
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> minmax('c','b')
+  ('b', 'c')
+
+julia> extrema(PC4[1])
+(-2957, 2520)
+
+julia> typeof(PC4[1])
+Array{Int16,2}
+
+julia> Int16.max
+ERROR: type DataType has no field max
+Stacktrace:
+ [1] getproperty(::Type{T} where T, ::Symbol) at ./Base.jl:28
+ [2] top-level scope at REPL[76]:1
+
+julia> max(Int16)
+ERROR: MethodError: no method matching max(::Type{Int16})
+Closest candidates are:
+  max(::Any, ::Missing) at missing.jl:129
+  max(::Any, ::Any) at operators.jl:417
+  max(::Any, ::Any, ::Any, ::Any...) at operators.jl:538
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[77]:1
+
+julia> wavplay(PC4[1])
+ERROR: MethodError: no method matching wavplay(::Array{Int16,2})
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+Stacktrace:
+ [1] top-level scope at REPL[78]:1
+
+julia> wavplay(PC4[1],11025)
+
+julia> wavplay(2*PC4[1],11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[80]:1
+
+julia> wavplay( 2 .* PC4[1],11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[81]:1
+
+julia> wavplay( (2 .* PC4[1]),11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[82]:1
+
+julia> wavplay( eval(2 .* PC4[1]),11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[83]:1
+
+julia> PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> PC4[1] *= 2
+ERROR: MethodError: no method matching setindex!(::Tuple{Array{Int16,2},Float32,UInt16,Array{WAVChunk,1}}, ::Array{Int64,2}, ::Int64)
+Stacktrace:
+ [1] top-level scope at REPL[85]:1
+
+julia> PC4[1] * 2
+29750×1 Array{Int64,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> PC4[1] * 2 |> wavplay(11025)
+ERROR: MethodError: no method matching wavplay(::Int64)
+Closest candidates are:
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+Stacktrace:
+ [1] top-level scope at REPL[87]:1
+
+julia> PC = Array{<:Integer}[]
+Array{var"#s28",N} where N where var"#s28"<:Integer[]
+
+julia> push!(PC,[[];[];[]])
+ERROR: MethodError: no method matching Array{var"#s28",N} where N where var"#s28"<:Integer(::Array{Any,1})
+Stacktrace:
+ [1] convert(::Type{Array{var"#s28",N} where N where var"#s28"<:Integer}, ::Array{Any,1}) at ./array.jl:554
+ [2] push!(::Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}, ::Array{Any,1}) at ./array.jl:934
+ [3] top-level scope at REPL[89]:1
+
+julia> push!(PC,[Int16[];Int16[];Int16[]])
+1-element Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}:
+ Int16[]
+
+julia> PC[1]
+Int16[]
+
+julia> push!(PC,Int16[])
+2-element Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}:
+ Int16[]
+ Int16[]
+
+julia> push!(PC,Int16[])
+3-element Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}:
+ Int16[]
+ Int16[]
+ Int16[]
+
+julia> push!(PC,PC4[1])
+4-element Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}:
+ Int16[]
+ Int16[]
+ Int16[]
+ Int16[-10; -15; … ; -15; -24]
+
+julia> push!(PC,PC5[1])
+5-element Array{Array{var"#s28",N} where N where var"#s28"<:Integer,1}:
+ Int16[]
+ Int16[]
+ Int16[]
+ Int16[-10; -15; … ; -15; -24]
+ Int16[-13; -19; … ; -9; -8]
+
+julia> push!(PC,PC6[1])
+ERROR: UndefVarError: PC6 not defined
+Stacktrace:
+ [1] top-level scope at REPL[95]:1
+
+julia> PC[4] = PC[4] * 2
+29750×1 Array{Int64,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> wavplay(PC[4],11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[97]:1
+
+julia> wavplay(PC4,11025)
+ERROR: MethodError: no method matching wavplay(::Tuple{Array{Int16,2},Float32,UInt16,Array{WAVChunk,1}}, ::Int64)
+Closest candidates are:
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+Stacktrace:
+ [1] top-level scope at REPL[98]:1
+
+julia> wavplay(PC4[1],11025)
+
+julia> methods(wavplay)
+# 2 methods for generic function "wavplay":
+[1] wavplay(fname::AbstractString) in WAV at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+[2] wavplay(data::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, fs::Real) in WAV.WAVPlay at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+
+julia> PC[4]
+29750×1 Array{Int64,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> (PC[4])
+29750×1 Array{Int64,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> wavplay((PC[4]),11025)
+ERROR: AudioQueueNewOutput failed with 1718449215
+Stacktrace:
+ [1] error(::String) at ./error.jl:33
+ [2] AudioQueueNewOutput(::WAV.WAVPlay.AudioStreamBasicDescription, ::WAV.WAVPlay.AudioQueueData{Int64,2}) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:274
+ [3] wavplay(::Array{Int64,2}, ::Int64) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:368
+ [4] top-level scope at REPL[103]:1
+
+julia> wavplay(PC4[1],11025)
+
+julia> wavplay(rand(Int16,1000),11025)
+
+julia> PC[4]
+29750×1 Array{Int64,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> PC[4] = PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> PC[4] *= 1
+29750×1 Array{Int64,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> PC[4] = PC4[1];
+
+julia> PC[4] *= Int16(2)
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> wavplay(PC[4],11025)
+
+julia> wavplay(PC[4]/Int16(2),11025)
+
+julia> PC[4]
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> PC[4]
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> wavplay(PC4[1],11025)
+
+julia> PC4
+(Int16[-10; -15; … ; -15; -24], 11025.0f0, 0x0010, WAVChunk[WAVChunk(Symbol("fmt "), UInt8[0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x11, 0x2b, 0x00, 0x00, 0x22, 0x56, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00])])
+
+julia> PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> wavplay(PC4[1],11025)
+
+julia> wavplay(PC5[1],11025)
+
+julia> wavplay(PC4[1],11025)
+
+julia> wavplay(PC4[1] * Int16(2),11025)
+
+julia> wavplay(PC4[1] * Int16(3),11025)
+
+julia> wavplay(PC4[1] * Int16(4),11025)
+
+julia> PC5[1]
+19750×1 Array{Int16,2}:
+ -13
+ -19
+ -18
+ -19
+ -17
+ -18
+ -18
+ -17
+ -19
+ -18
+   ⋮
+ -55
+ -50
+ -50
+ -44
+ -26
+ -17
+ -14
+  -9
+  -8
+
+julia> wavplay(PC4[1][1:19750] + PC5[1],11025)
+
+julia> wavplay(PC4[1][1:19750] + PC5[1],11025)
+
+julia> wavplay(PC4[1][1:19750] + Int16(2)*PC5[1],11025)
+
+julia> wavplay(PC4[1][1:19750] + Int16(3)*PC5[1],11025)
+
+julia> PC[5]
+19750×1 Array{Int16,2}:
+ -13
+ -19
+ -18
+ -19
+ -17
+ -18
+ -18
+ -17
+ -19
+ -18
+   ⋮
+ -55
+ -50
+ -50
+ -44
+ -26
+ -17
+ -14
+  -9
+  -8
+
+julia> PC[4] + [zeros(Int16,k*100);PC[4][k*100+1:end]]
+ERROR: UndefVarError: k not defined
+Stacktrace:
+ [1] top-level scope at REPL[130]:1
+
+julia> PC[4] + [zeros(Int16,100);PC[4][k*100+1:end]]
+ERROR: UndefVarError: k not defined
+Stacktrace:
+ [1] top-level scope at REPL[131]:1
+
+julia> PC[4] + [zeros(Int16,100);PC[4][100+1:end]]
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  96
+ 156
+ 176
+ 152
+  80
+   4
+ -44
+ -60
+ -96
+
+julia> sum([[zeros(Int16,k*100);PC[4][k*100+1:end] for k in 0:6])
+ERROR: syntax: invalid comprehension syntax
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> sum([[zeros(Int16,k*100);PC[4][k*100+1:end]] for k in 0:6])
+29750-element Array{Int16,1}:
+  -20
+  -30
+  -28
+  -30
+  -28
+  -32
+  -30
+  -32
+  -32
+  -34
+    ⋮
+  336
+  546
+  616
+  532
+  280
+   14
+ -154
+ -210
+ -336
+
+julia> sum([[zeros(Int16,k*100);PC[4][k*100+1:end]] for k in 0:6])|>plot
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+GKS: character ignored due to unicode error
+
+julia> sum([[zeros(Int16,k*100);PC[4][k*100+1:end]] for k in 0:6])|>wavplay(11025)
+ERROR: MethodError: no method matching wavplay(::Int64)
+Closest candidates are:
+  wavplay(::AbstractString) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/WAV.jl:1076
+  wavplay(::Union{AbstractArray{var"#s37",1}, AbstractArray{var"#s37",2}} where var"#s37"<:Real, ::Real) at /Users/EricAboaf/.julia/packages/WAV/TgTgX/src/wavplay-audioqueue.jl:366
+Stacktrace:
+ [1] top-level scope at REPL[136]:1
+
+julia> wavplay(sum([[zeros(Int16,k*100);PC[4][k*100+1:end]] for k in 0:6]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*100);PC[4][1:29750-k*100-1]] for k in 0:6]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*50);PC[4][1:29750-k*50-1]] for k in 0:6]),11025)
+
+julia> Int16(15) .* extrema(PC[4])
+(-23174, 10064)
+
+julia> 2^15
+32768
+
+julia> wavplay(sum([[zeros(Int16,k*50); Int16(6-k)*PC[4][1:29750-k*50-1]] for k in 0:5]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*150); Int16(6-k)*PC[4][1:29750-k*150-1]] for k in 0:5]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*25); Int16(6-k)*PC[4][1:29750-k*25-1]] for k in 0:5]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*25); PC[4][1:29750-k*25-1]] for k in 0:8]),11025)
+
+julia> wavplay(sum([[zeros(Int16,k*25); PC[4][1:29750-k*25-1]] for k in 0:7]),11025)
+
+julia> hcat(PC[4])
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> hcat(PC[4]...)
+1×29750 Array{Int16,2}:
+ -20  -30  -28  -30  -28  -32  -30  -32  …  78  88  76  40  2  -22  -30  -48
+
+julia> [hcat(PC[4]...);hcat(PC[4]...)]
+2×29750 Array{Int16,2}:
+ -20  -30  -28  -30  -28  -32  -30  -32  …  78  88  76  40  2  -22  -30  -48
+ -20  -30  -28  -30  -28  -32  -30  -32     78  88  76  40  2  -22  -30  -48
+
+julia> vec([hcat(PC[4]...);hcat(PC[4]...)])
+59500-element Array{Int16,1}:
+ -20
+ -20
+ -30
+ -30
+ -28
+ -28
+ -30
+ -30
+ -28
+ -28
+   ⋮
+  40
+   2
+   2
+ -22
+ -22
+ -30
+ -30
+ -48
+ -48
+
+julia> wavplay(vec([hcat(PC[4]...);hcat(PC[4]...)]),22050)
+
+julia> wavplay(vec([hcat(PC[4]...);hcat(PC[5]...)]),22050)
+ERROR: ArgumentError: number of columns of each array must match (got (29750, 19750))
+Stacktrace:
+ [1] _typed_vcat(::Type{Int16}, ::Tuple{Array{Int16,2},Array{Int16,2}}) at ./abstractarray.jl:1439
+ [2] typed_vcat at ./abstractarray.jl:1453 [inlined]
+ [3] vcat(::Array{Int16,2}, ::Array{Int16,2}) at /Users/julia/buildbot/worker/package_macos64/build/usr/share/julia/stdlib/v1.5/SparseArrays/src/sparsevector.jl:1077
+ [4] top-level scope at REPL[152]:1
+
+julia> wavplay(vec([hcat(PC[4][1:19750]...);hcat(PC[5][1:19750]...)]),22050)
+
+julia> wavplay(vec([hcat(PC[4][1:19750]...);hcat(PC[5][1:19750]...)]),22050)
+
+julia> wavplay(vec([hcat(PC[4][1:8500]...);hcat(PC[5][1:8500]...)]) + PC[5][1:19000],22050)
+ERROR: DimensionMismatch("dimensions must match: a has dims (Base.OneTo(17000),), b has dims (Base.OneTo(19000),), mismatch at 1")
+Stacktrace:
+ [1] promote_shape at ./indices.jl:178 [inlined]
+ [2] promote_shape at ./indices.jl:169 [inlined]
+ [3] +(::Array{Int16,1}, ::Array{Int16,1}) at ./arraymath.jl:45
+ [4] top-level scope at REPL[154]:1
+
+julia> wavplay(vec([hcat(PC[4][1:9500]...);hcat(PC[5][1:9500]...)]) + PC[5][1:19000],22050)
+
+julia> wavplay(vec([hcat(PC[4][1:9500]...);hcat(PC[5][1:9500]...)]) + PC[5][1:19000],22050)
+
+julia> PC[4] .+ minimum(PC[4])
+29750×1 Array{Int16,2}:
+ -5934
+ -5944
+ -5942
+ -5944
+ -5942
+ -5946
+ -5944
+ -5946
+ -5946
+ -5948
+     ⋮
+ -5866
+ -5836
+ -5826
+ -5838
+ -5874
+ -5912
+ -5936
+ -5944
+ -5962
+
+julia> minimum(PC[4])
+-5914
+
+julia> PC[4]
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> PC[4] .+ abs(minimum(PC[4]))
+29750×1 Array{Int16,2}:
+ 5894
+ 5884
+ 5886
+ 5884
+ 5886
+ 5882
+ 5884
+ 5882
+ 5882
+ 5880
+    ⋮
+ 5962
+ 5992
+ 6002
+ 5990
+ 5954
+ 5916
+ 5892
+ 5884
+ 5866
+
+julia> PC[4] .+ abs(minimum(PC[4])) .|> UInt16
+29750×1 Array{UInt16,2}:
+ 0x1706
+ 0x16fc
+ 0x16fe
+ 0x16fc
+ 0x16fe
+ 0x16fa
+ 0x16fc
+ 0x16fa
+ 0x16fa
+ 0x16f8
+      ⋮
+ 0x174a
+ 0x1768
+ 0x1772
+ 0x1766
+ 0x1742
+ 0x171c
+ 0x1704
+ 0x16fc
+ 0x16ea
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16,11025)
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 .- UInt16(5914),11025)
+ERROR: MethodError: no method matching -(::Type{UInt16}, ::UInt16)
+Closest candidates are:
+  -(::Complex{Bool}, ::Real) at complex.jl:307
+  -(::Missing, ::Number) at missing.jl:115
+  -(::ChainRulesCore.NotImplemented, ::Any) at /Users/EricAboaf/.julia/packages/ChainRulesCore/8NXnp/src/tangent_arithmetic.jl:49
+  ...
+Stacktrace:
+ [1] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [2] _broadcast_getindex at ./broadcast.jl:631 [inlined]
+ [3] _getindex at ./broadcast.jl:645 [inlined]
+ [4] _getindex at ./broadcast.jl:644 [inlined]
+ [5] _broadcast_getindex at ./broadcast.jl:620 [inlined]
+ [6] getindex at ./broadcast.jl:575 [inlined]
+ [7] copy at ./broadcast.jl:876 [inlined]
+ [8] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(|>),Tuple{Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(+),Tuple{Array{Int16,2},Int16}},Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{0},Nothing,typeof(-),Tuple{Base.RefValue{Type{UInt16}},UInt16}}}}) at ./broadcast.jl:837
+ [9] top-level scope at REPL[162]:1
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 ,11025)
+
+julia> PC[4]
+29750×1 Array{Int16,2}:
+ -20
+ -30
+ -28
+ -30
+ -28
+ -32
+ -30
+ -32
+ -32
+ -34
+   ⋮
+  48
+  78
+  88
+  76
+  40
+   2
+ -22
+ -30
+ -48
+
+julia> PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> PC[4] ./ Int16(2)
+29750×1 Array{Float64,2}:
+ -10.0
+ -15.0
+ -14.0
+ -15.0
+ -14.0
+ -16.0
+ -15.0
+ -16.0
+ -16.0
+ -17.0
+   ⋮
+  24.0
+  39.0
+  44.0
+  38.0
+  20.0
+   1.0
+ -11.0
+ -15.0
+ -24.0
+
+julia> PC[4] = PC4[1]
+29750×1 Array{Int16,2}:
+ -10
+ -15
+ -14
+ -15
+ -14
+ -16
+ -15
+ -16
+ -16
+ -17
+   ⋮
+  24
+  39
+  44
+  38
+  20
+   1
+ -11
+ -15
+ -24
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 ,11025)
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 .* 2,11025)
+ERROR: MethodError: no method matching *(::Type{UInt16}, ::Int64)
+Closest candidates are:
+  *(::Any, ::Any, ::Any, ::Any...) at operators.jl:538
+  *(::Complex{Bool}, ::Real) at complex.jl:309
+  *(::Missing, ::Number) at missing.jl:115
+  ...
+Stacktrace:
+ [1] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [2] _broadcast_getindex at ./broadcast.jl:631 [inlined]
+ [3] _getindex at ./broadcast.jl:645 [inlined]
+ [4] _getindex at ./broadcast.jl:644 [inlined]
+ [5] _broadcast_getindex at ./broadcast.jl:620 [inlined]
+ [6] getindex at ./broadcast.jl:575 [inlined]
+ [7] copy at ./broadcast.jl:876 [inlined]
+ [8] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(|>),Tuple{Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(+),Tuple{Array{Int16,2},Int16}},Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{0},Nothing,typeof(*),Tuple{Base.RefValue{Type{UInt16}},Int64}}}}) at ./broadcast.jl:837
+ [9] top-level scope at REPL[169]:1
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 .* UInt16(2),11025)
+ERROR: MethodError: no method matching *(::Type{UInt16}, ::UInt16)
+Closest candidates are:
+  *(::Any, ::Any, ::Any, ::Any...) at operators.jl:538
+  *(::Complex{Bool}, ::Real) at complex.jl:309
+  *(::Missing, ::Number) at missing.jl:115
+  ...
+Stacktrace:
+ [1] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [2] _broadcast_getindex at ./broadcast.jl:631 [inlined]
+ [3] _getindex at ./broadcast.jl:645 [inlined]
+ [4] _getindex at ./broadcast.jl:644 [inlined]
+ [5] _broadcast_getindex at ./broadcast.jl:620 [inlined]
+ [6] getindex at ./broadcast.jl:575 [inlined]
+ [7] copy at ./broadcast.jl:876 [inlined]
+ [8] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(|>),Tuple{Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(+),Tuple{Array{Int16,2},Int16}},Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{0},Nothing,typeof(*),Tuple{Base.RefValue{Type{UInt16}},UInt16}}}}) at ./broadcast.jl:837
+ [9] top-level scope at REPL[170]:1
+
+julia> wavplay(PC[4] .+ abs(minimum(PC[4])) .|> UInt16 * UInt16(2),11025)
+ERROR: MethodError: no method matching *(::Type{UInt16}, ::UInt16)
+Closest candidates are:
+  *(::Any, ::Any, ::Any, ::Any...) at operators.jl:538
+  *(::Complex{Bool}, ::Real) at complex.jl:309
+  *(::Missing, ::Number) at missing.jl:115
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[171]:1
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(2),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(3),11025)
+
+julia> (PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(3)
+29750×1 Array{UInt16,2}:
+ 0x2289
+ 0x227a
+ 0x227d
+ 0x227a
+ 0x227d
+ 0x2277
+ 0x227a
+ 0x2277
+ 0x2277
+ 0x2274
+      ⋮
+ 0x22ef
+ 0x231c
+ 0x232b
+ 0x2319
+ 0x22e3
+ 0x22aa
+ 0x2286
+ 0x227a
+ 0x225f
+
+julia> (PC[4] .+ abs(minimum(PC[4])))
+29750×1 Array{Int16,2}:
+ 2947
+ 2942
+ 2943
+ 2942
+ 2943
+ 2941
+ 2942
+ 2941
+ 2941
+ 2940
+    ⋮
+ 2981
+ 2996
+ 3001
+ 2995
+ 2977
+ 2958
+ 2946
+ 2942
+ 2933
+
+julia> (PC[4] .+ abs(minimum(PC[4]))) |> extrema
+(0, 5477)
+
+julia> 2^16
+65536
+
+julia> 2^16 /5477
+11.965674639401133
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(3),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(3),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(4),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(5),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(7),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(6),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(7),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(8),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(9),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(10),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) * UInt16(11),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(0),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(0),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .* UInt16(1),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .* UInt16(2),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .* UInt16(3),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .* UInt16(6),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(10000),11025)
+
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(1000),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(5000),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(25000),11025)
+
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(40000),11025)
+
+julia> 
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .+ UInt16(40000),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) .|> UInt16) .* UInt16(6),11025)
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) * UInt16(3)),11025)
+
+julia> 2^15
+32768
+
+julia> wavplay((PC[4] .+ abs(minimum(PC[4])) * UInt16(6)),11025)
+
+julia> wavplay((PC[4]) * UInt16(6)),11025)
+ERROR: syntax: extra token ")" after end of expression
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> wavplay((PC[4]) * UInt16(6),11025)
+
+julia> wavplay((PC[4]) * Int16(6),11025)
+
+julia> wavplay((PC[4]) .+ Int16(6000),11025)
+
+julia> wavplay( Int16(2)*(PC[4]) .+ Int16(6000),11025)
+
+julia> wavplay( Int16(3)*(PC[4]) .+ Int16(6000),11025)
+
+julia> wavplay( Int16(4)*(PC[4]) .+ Int16(6000),11025)
+
+julia> PC[4] .|> UInt16
+ERROR: InexactError: check_top_bit(UInt16, -10)
+Stacktrace:
+ [1] throw_inexacterror(::Symbol, ::Type{UInt16}, ::Int16) at ./boot.jl:558
+ [2] check_top_bit at ./boot.jl:572 [inlined]
+ [3] toUInt16 at ./boot.jl:659 [inlined]
+ [4] UInt16 at ./boot.jl:711 [inlined]
+ [5] |> at ./operators.jl:834 [inlined]
+ [6] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [7] _broadcast_getindex at ./broadcast.jl:636 [inlined]
+ [8] getindex at ./broadcast.jl:575 [inlined]
+ [9] macro expansion at ./broadcast.jl:932 [inlined]
+ [10] macro expansion at ./simdloop.jl:77 [inlined]
+ [11] copyto! at ./broadcast.jl:931 [inlined]
+ [12] copyto! at ./broadcast.jl:886 [inlined]
+ [13] copy at ./broadcast.jl:862 [inlined]
+ [14] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(|>),Tuple{Array{Int16,2},Base.RefValue{Type{UInt16}}}}) at ./broadcast.jl:837
+ [15] top-level scope at REPL[210]:1
+
+julia> PC[4] .+ minimum(PC[4]) .|> UInt16
+ERROR: InexactError: check_top_bit(UInt16, -2967)
+Stacktrace:
+ [1] throw_inexacterror(::Symbol, ::Type{UInt16}, ::Int16) at ./boot.jl:558
+ [2] check_top_bit at ./boot.jl:572 [inlined]
+ [3] toUInt16 at ./boot.jl:659 [inlined]
+ [4] UInt16 at ./boot.jl:711 [inlined]
+ [5] |> at ./operators.jl:834 [inlined]
+ [6] _broadcast_getindex_evalf at ./broadcast.jl:648 [inlined]
+ [7] _broadcast_getindex at ./broadcast.jl:636 [inlined]
+ [8] getindex at ./broadcast.jl:575 [inlined]
+ [9] macro expansion at ./broadcast.jl:932 [inlined]
+ [10] macro expansion at ./simdloop.jl:77 [inlined]
+ [11] copyto! at ./broadcast.jl:931 [inlined]
+ [12] copyto! at ./broadcast.jl:886 [inlined]
+ [13] copy at ./broadcast.jl:862 [inlined]
+ [14] materialize(::Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(|>),Tuple{Base.Broadcast.Broadcasted{Base.Broadcast.DefaultArrayStyle{2},Nothing,typeof(+),Tuple{Array{Int16,2},Int16}},Base.RefValue{Type{UInt16}}}}) at ./broadcast.jl:837
+ [15] top-level scope at REPL[211]:1
+
+julia> PC[4] .- minimum(PC[4]) .|> UInt16
+29750×1 Array{UInt16,2}:
+ 0x0b83
+ 0x0b7e
+ 0x0b7f
+ 0x0b7e
+ 0x0b7f
+ 0x0b7d
+ 0x0b7e
+ 0x0b7d
+ 0x0b7d
+ 0x0b7c
+      ⋮
+ 0x0ba5
+ 0x0bb4
+ 0x0bb9
+ 0x0bb3
+ 0x0ba1
+ 0x0b8e
+ 0x0b82
+ 0x0b7e
+ 0x0b75
+
+julia> wavplay(PC[4] .- minimum(PC[4]) .|> UInt16,11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .+ UInt16(2^15),11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .+ UInt16(2^10),11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .* UInt16(4),11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .* UInt16(6),11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .* UInt16(5),11025)
+
+julia> wavplay((PC[4] .- minimum(PC[4]) .|> UInt16) .* UInt16(4),11025)
+
+julia> wavplay( PC[4] * Int16(4),11025)
+
+julia> PC[4] |> sum
+-1433451
+
+julia> PC[4] |> sum |>typeof
+Int64
+
+julia> PC[4] |> average
+ERROR: UndefVarError: average not defined
+Stacktrace:
+ [1] top-level scope at REPL[223]:1
+
+julia> PC[4] |> mean
+ERROR: UndefVarError: mean not defined
+Stacktrace:
+ [1] top-level scope at REPL[224]:1
+
+julia> (PC[4] |> sum)/length(PC[4])
+-48.1832268907563
+
+julia> findlast(x-> x mod length(PC[4]) == 0,PC[4] |> cumsum
+ERROR: syntax: missing comma or ) in argument list
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> findlast(x-> x mod length(PC[4]) == 0,PC[4] |> cumsum)
+ERROR: syntax: missing comma or ) in argument list
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> findlast(x-> x % length(PC[4]) == 0,PC[4] |> cumsum)
+ERROR: UndefKeywordError: keyword argument dims not assigned
+Stacktrace:
+ [1] cumsum(::Array{Int16,2}) at ./accumulate.jl:112
+ [2] |>(::Array{Int16,2}, ::typeof(cumsum)) at ./operators.jl:834
+ [3] top-level scope at REPL[228]:1
+
+julia> findlast(x-> x % length(PC[4]) == 0, PC[4] |> cumsum(dims=1))
+ERROR: MethodError: no method matching cumsum(; dims=1)
+Closest candidates are:
+  cumsum(::StaticArrays.StaticArray; kw...) at /Users/EricAboaf/.julia/packages/StaticArrays/WNOVH/src/mapreduce.jl:354
+  cumsum(::AbstractArray{T,1} where T) at accumulate.jl:150 got unsupported keyword argument "dims"
+  cumsum(::AbstractArray{T,N} where N; dims) where T at accumulate.jl:111
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[229]:1
+
+julia> findlast(x-> x % length(PC[4]) == 0, cumsum(PC[4],dims=1))
+CartesianIndex(5195, 1)
+
+julia> cumsum(PC[4],dims=1) .% 1:length(PC[4])
+ERROR: MethodError: no method matching (::Colon)(::Array{Int64,2}, ::Int64)
+Closest candidates are:
+  Any(::T, ::Any, ::T) where T at range.jl:40
+  Any(::Any, ::Any, ::Lazy.List) at /Users/EricAboaf/.julia/packages/Lazy/9Xnd3/src/Lazy.jl:61
+  Any(::T, ::Real, ::T) where T<:AbstractFloat at range.jl:18
+  ...
+Stacktrace:
+ [1] top-level scope at REPL[231]:1
+
+julia> cumsum(PC[4],dims=1) .% (1:length(PC[4]))
+29750×1 Array{Int64,2}:
+     0
+    -1
+     0
+    -2
+    -3
+     0
+    -1
+    -3
+    -5
+    -8
+     ⋮
+ -5927
+ -5840
+ -5748
+ -5662
+ -5594
+ -5545
+ -5508
+ -5475
+ -5451
+
+julia> findlast(==(0),cumsum(PC[4],dims=1) .% (1:length(PC[4])))
+CartesianIndex(4575, 1)
+
+julia> wavplay( PC[4],11025)
+
+julia> wavplay( PC[4],11025)
+
+julia> wavplay( PC[4],11025)
+
+julia> wavplay( PC[4],11025)
+
+julia> wavplay( repeat(Int16(-2000):Int16(10):Int16(2000),500) ,11025)
+
+julia> wavplay( repeat(Int16(-2000):Int16(10):Int16(2000),50) ,20000)
+
+julia> wavplay( repeat(Int16(-2000):Int16(10):Int16(2000),50) .^2,20000)
+
+julia> wavplay( repeat(Int16(-200):Int16(1):Int16(200),50) .^2,20000)
+
+julia> repeat(Int16(-200):Int16(1):Int16(200),50)
+20050-element Array{Int16,1}:
+ -200
+ -199
+ -198
+ -197
+ -196
+ -195
+ -194
+ -193
+ -192
+ -191
+    ⋮
+  192
+  193
+  194
+  195
+  196
+  197
+  198
+  199
+  200
+
+julia> 20000/500
+40.0
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) .^2,20000)
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) .^2,15000)
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) .^2,12000)
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) .^2,10000)
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) ,10000)
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),50) ,20000)
+
+julia> 20000/80
+250.0
+
+julia> 20000/400
+50.0
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),250) ,20000)
+
+julia> 40*250
+10000
+
+julia> wavplay( repeat(Int16(-200):Int16(10):Int16(200),500) ,20000)
+
+julia> wavplay( repeat(Int16(-2000):Int16(100):Int16(2000),500) ,20000)
+
+julia> wavplay( repeat(Int16(-2000):Int16(100):Int16(2000),500) ,10000)
+
+julia> wavplay( repeat(Int16(-2000):Int16(100):Int16(2000),500) ,15000)
+
+help?> Array
+search: Array SubArray BitArray DenseArray WAVArray StridedArray PermutedDimsArray AbstractGray
+
+  Array{T,N} <: AbstractArray{T,N}
+
+  N-dimensional dense array with elements of type T.
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  Array{T}(undef, dims)
+  Array{T,N}(undef, dims)
+
+  Construct an uninitialized N-dimensional Array containing elements of type T. N can either be
+  supplied explicitly, as in Array{T,N}(undef, dims), or be determined by the length or number of
+  dims. dims may be a tuple or a series of integer arguments corresponding to the lengths in each
+  dimension. If the rank N is supplied explicitly, then it must match the length or number of
+  dims. See undef.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = Array{Float64,2}(undef, 2, 3) # N given explicitly
+  2×3 Array{Float64,2}:
+   6.90198e-310  6.90198e-310  6.90198e-310
+   6.90198e-310  6.90198e-310  0.0
+  
+  julia> B = Array{Float64}(undef, 2) # N determined by the input
+  2-element Array{Float64,1}:
+   1.87103e-320
+   0.0
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  Array{T}(nothing, dims)
+  Array{T,N}(nothing, dims)
+
+  Construct an N-dimensional Array containing elements of type T, initialized with nothing
+  entries. Element type T must be able to hold these values, i.e. Nothing <: T.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> Array{Union{Nothing, String}}(nothing, 2)
+  2-element Array{Union{Nothing, String},1}:
+   nothing
+   nothing
+  
+  julia> Array{Union{Nothing, Int}}(nothing, 2, 3)
+  2×3 Array{Union{Nothing, Int64},2}:
+   nothing  nothing  nothing
+   nothing  nothing  nothing
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  Array{T}(missing, dims)
+  Array{T,N}(missing, dims)
+
+  Construct an N-dimensional Array containing elements of type T, initialized with missing
+  entries. Element type T must be able to hold these values, i.e. Missing <: T.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> Array{Union{Missing, String}}(missing, 2)
+  2-element Array{Union{Missing, String},1}:
+   missing
+   missing
+  
+  julia> Array{Union{Missing, Int}}(missing, 2, 3)
+  2×3 Array{Union{Missing, Int64},2}:
+   missing  missing  missing
+   missing  missing  missing
+
+julia> struct {p}
+       end
+ERROR: syntax: invalid type signature around REPL[256]:1
+Stacktrace:
+ [1] top-level scope at REPL[256]:1
+
+julia> struct {2}
+       end
+ERROR: syntax: invalid type signature around REPL[257]:1
+Stacktrace:
+ [1] top-level scope at REPL[257]:1
+
+help?> dims
+search: Dims ndims DimensionMismatch permutedims permutedims! PermutedDimsArray dropdims
+
+Couldn't find dims
+Perhaps you meant Dims, ndims, diff, div, dump, xlims, ylims, zlims, cis, im, time, Dict or digits
+  No documentation found.
+
+  Binding dims does not exist.
+
+help?> Dims
+search: Dims ndims DimensionMismatch permutedims permutedims! PermutedDimsArray dropdims
+
+  Dims{N}
+
+  An NTuple of N Ints used to represent the dimensions of an AbstractArray.
+
+help?> size
+search: size sizeof sizehint! Csize_t resize! filesize Cssize_t displaysize @specialize
+
+  size(A::AbstractArray, [dim])
+
+  Return a tuple containing the dimensions of A. Optionally you can specify a dimension to just
+  get the length of that dimension.
+
+  Note that size may not be defined for arrays with non-standard indices, in which case axes may
+  be useful. See the manual chapter on arrays with custom indices.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (2,3,4));
+  
+  julia> size(A)
+  (2, 3, 4)
+  
+  julia> size(A, 2)
+  3
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  size(cb::CircularBuffer)
+
+  Return a tuple with the size of the buffer.
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  size(::PlotlyBase.Plot)
+
+  Return the size of the plot in pixels. Obtained from the layout.width and layout.height fields.
+
+julia> indices
+ERROR: UndefVarError: indices not defined
+
+help?> zeroindex
+search:
+
+Couldn't find zeroindex
+Perhaps you meant getindex or checkindex
+  No documentation found.
+
+  Binding zeroindex does not exist.
+
+help?> axes
+search: axes WAVFormatExtension ProcessFailedException CapturedException TaskFailedException
+
+  axes(A, d)
+
+  Return the valid range of indices for array A along dimension d.
+
+  See also size, and the manual chapter on arrays with custom indices.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (5,6,7));
+  
+  julia> axes(A, 2)
+  Base.OneTo(6)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  axes(A)
+
+  Return the tuple of valid indices for array A.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (5,6,7));
+  
+  julia> axes(A)
+  (Base.OneTo(5), Base.OneTo(6), Base.OneTo(7))
+
+julia> exp(2pii)
+ERROR: UndefVarError: pii not defined
+Stacktrace:
+ [1] top-level scope at REPL[264]:1
+
+julia> exp(2 pi i)
+ERROR: syntax: missing comma or ) in argument list
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> exp(2πim)
+ERROR: UndefVarError: πim not defined
+Stacktrace:
+ [1] top-level scope at REPL[266]:1
+
+julia> exp(2π im)
+ERROR: syntax: missing comma or ) in argument list
+Stacktrace:
+ [1] top-level scope at none:1
+
+julia> exp(2*π*im)
+1.0 - 2.4492935982947064e-16im
+
+julia> z=exp(2*π*im/120)
+0.9986295347545738 + 0.05233595624294383im
+
+julia> z^60
+-0.9999999999999962 + 1.5265566588595902e-16im
+
+julia> z=exp(2*π*im//120)
+0.9986295347545738 + 0.05233595624294383im
+
+julia> typeof(z)
+Complex{Float64}
+
+julia> z^60
+-0.9999999999999962 + 1.5265566588595902e-16im
+
+help?> findlast
+search: findlast
+
+  findlast(A)
+
+  Return the index or key of the last true value in A. Return nothing if there is no true value
+  in A.
+
+  Indices or keys are of the same type as those returned by keys(A) and pairs(A).
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = [true, false, true, false]
+  4-element Array{Bool,1}:
+   1
+   0
+   1
+   0
+  
+  julia> findlast(A)
+  3
+  
+  julia> A = falses(2,2);
+  
+  julia> findlast(A) # returns nothing, but not printed in the REPL
+  
+  julia> A = [true false; true false]
+  2×2 Array{Bool,2}:
+   1  0
+   1  0
+  
+  julia> findlast(A)
+  CartesianIndex(2, 1)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  findlast(predicate::Function, A)
+
+  Return the index or key of the last element of A for which predicate returns true. Return
+  nothing if there is no such element.
+
+  Indices or keys are of the same type as those returned by keys(A) and pairs(A).
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = [1, 2, 3, 4]
+  4-element Array{Int64,1}:
+   1
+   2
+   3
+   4
+  
+  julia> findlast(isodd, A)
+  3
+  
+  julia> findlast(x -> x > 5, A) # returns nothing, but not printed in the REPL
+  
+  julia> A = [1 2; 3 4]
+  2×2 Array{Int64,2}:
+   1  2
+   3  4
+  
+  julia> findlast(isodd, A)
+  CartesianIndex(2, 1)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  findlast(pattern::AbstractString, string::AbstractString)
+
+  Find the last occurrence of pattern in string. Equivalent to findprev(pattern, string,
+  lastindex(string)).
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> findlast("o", "Hello to the world")
+  15:15
+  
+  julia> findfirst("Julia", "JuliaLang")
+  1:5
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  findlast(ch::AbstractChar, string::AbstractString)
+
+  Find the last occurrence of character ch in string.
+
+  │ Julia 1.3
+  │
+  │  This method requires at least Julia 1.3.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> findlast('p', "happy")
+  4
+  
+  julia> findlast('z', "happy") === nothing
+  true
+
+help?> getlast
+search: get_color_palette
+
+Couldn't find getlast
+Perhaps you meant last or get
+  No documentation found.
+
+  Binding getlast does not exist.
+
+help?> last
+search: last lastindex findlast searchsortedlast task_local_storage @colorant_str lowercasefirst
+
+  last(coll)
+
+  Get the last element of an ordered collection, if it can be computed in O(1) time. This is
+  accomplished by calling lastindex to get the last index. Return the end point of an
+  AbstractRange even if it is empty.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> last(1:2:10)
+  9
+  
+  julia> last([1; 2; 3; 4])
+  4
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(s::AbstractString, n::Integer)
+
+  Get a string consisting of the last n characters of s.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> last("∀ϵ≠0: ϵ²>0", 0)
+  ""
+  
+  julia> last("∀ϵ≠0: ϵ²>0", 1)
+  "0"
+  
+  julia> last("∀ϵ≠0: ϵ²>0", 3)
+  "²>0"
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(q::Deque)
+
+  Returns the last element of the deque q.
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(D::CircularDeque)
+
+  Get the item from the back of the queue.
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(sc)
+
+  Argument sc is a SortedDict, SortedMultiDict or SortedSet. This function returns the last item
+  (a k=>v pair for SortedDict and SortedMultiDict or a key for SortedSet) according to the sorted
+  order in the container. Thus, last(sc) is equivalent to deref((sc,lastindex(sc))). It is an
+  error to call this function on an empty container. Time: O(log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(sc)
+
+  Argument sc is a SortedDict, SortedMultiDict or SortedSet. This function returns the last item
+  (a k=>v pair for SortedDict and SortedMultiDict or a key for SortedSet) according to the sorted
+  order in the container. Thus, last(sc) is equivalent to deref((sc,lastindex(sc))). It is an
+  error to call this function on an empty container. Time: O(log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(sc)
+
+  Argument sc is a SortedDict, SortedMultiDict or SortedSet. This function returns the last item
+  (a k=>v pair for SortedDict and SortedMultiDict or a key for SortedSet) according to the sorted
+  order in the container. Thus, last(sc) is equivalent to deref((sc,lastindex(sc))). It is an
+  error to call this function on an empty container. Time: O(log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  last(cb::CircularBuffer)
+
+  Get the last element of CircularBuffer.
+
+help?> lastindex
+search: lastindex
+
+  lastindex(collection) -> Integer
+  lastindex(collection, d) -> Integer
+
+  Return the last index of collection. If d is given, return the last index of collection along
+  dimension d.
+
+  The syntaxes A[end] and A[end, end] lower to A[lastindex(A)] and A[lastindex(A, 1),
+  lastindex(A, 2)], respectively.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> lastindex([1,2,4])
+  3
+  
+  julia> lastindex(rand(3,4,5), 2)
+  4
+
+help?> find
+search: findmin findmax findall findprev findnext findmin! findmax! findlast findfirst isdefined
+
+Couldn't find find
+Perhaps you meant bind, sind, fill, font, fd, fld, Cint, asind, in, inv, min, rand, sin or sinc
+  No documentation found.
+
+  Binding find does not exist.
+
+help?> at
+search: add_theme abstract type atan atanh atand attr! atexit atreplinit cat catch match pathof
+
+Couldn't find at
+Perhaps you meant cat, atan, hcat, stat, vcat, last, wait, acot, ans, abs, all, any, Lab or bar
+  No documentation found.
+
+  Binding at does not exist.
+
+help?> valueat
+search: values
+
+Couldn't find valueat
+Perhaps you meant values or valtype
+  No documentation found.
+
+  Binding valueat does not exist.
+
+help?> indexin
+search: indexin IndexLinear IndexCartesian InvalidStateException IndexStyle setindex! getindex
+
+  indexin(a, b)
+
+  Return an array containing the first index in b for each value in a that is a member of b. The
+  output array contains nothing wherever a is not a member of b.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> a = ['a', 'b', 'c', 'b', 'd', 'a'];
+  
+  julia> b = ['a', 'b', 'c'];
+  
+  julia> indexin(a, b)
+  6-element Array{Union{Nothing, Int64},1}:
+   1
+   2
+   3
+   2
+    nothing
+   1
+  
+  julia> indexin(b, a)
+  3-element Array{Union{Nothing, Int64},1}:
+   1
+   2
+   3
+
+help?> pop
+search: pop! popat! popfirst! popdisplay propertynames apropos deepcopy hasproperty getproperty
+
+Couldn't find pop
+Perhaps you meant pop!, plot, prod, pie, png, pi, pwd, cp, cmp, copy, exp, map, zip, chop or mov
+  No documentation found.
+
+  Binding pop does not exist.
+
+help?> popdisplay
+search: popdisplay
+
+  popdisplay()
+  popdisplay(d::AbstractDisplay)
+
+  Pop the topmost backend off of the display-backend stack, or the topmost copy of d in the
+  second variant.
+
+help?> pop!
+search: pop! popat! popfirst! setproperty! plots_heatmap! partialsortperm! portfoliocomposition!
+
+  pop!(collection) -> item
+
+  Remove an item in collection and return it. If collection is an ordered container, the last
+  item is returned.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A=[1, 2, 3]
+  3-element Array{Int64,1}:
+   1
+   2
+   3
+  
+  julia> pop!(A)
+  3
+  
+  julia> A
+  2-element Array{Int64,1}:
+   1
+   2
+  
+  julia> S = Set([1, 2])
+  Set{Int64} with 2 elements:
+    2
+    1
+  
+  julia> pop!(S)
+  2
+  
+  julia> S
+  Set{Int64} with 1 element:
+    1
+  
+  julia> pop!(Dict(1=>2))
+  1 => 2
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(collection, key[, default])
+
+  Delete and return the mapping for key if it exists in collection, otherwise return default, or
+  throw an error if default is not specified.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> d = Dict("a"=>1, "b"=>2, "c"=>3);
+  
+  julia> pop!(d, "a")
+  1
+  
+  julia> pop!(d, "d")
+  ERROR: KeyError: key "d" not found
+  Stacktrace:
+  [...]
+  
+  julia> pop!(d, "e", 4)
+  4
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(q::Deque{T})
+
+  Remove the element at the back
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(h::BinaryMinMaxHeap) = popmin!(h)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(sc, k[, default])
+
+  Deletes the item with key k in SortedDict or SortedSet sc and returns the value that was
+  associated with k in the case of SortedDict or k itself in the case of SortedSet. If k is not
+  in sc return default, or throw a KeyError if default is not specified. Time: O(c log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(sc, k[, default])
+
+  Deletes the item with key k in SortedDict or SortedSet sc and returns the value that was
+  associated with k in the case of SortedDict or k itself in the case of SortedSet. If k is not
+  in sc return default, or throw a KeyError if default is not specified. Time: O(c log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(ss)
+
+  Deletes the item with first key in SortedSet ss and returns the key. A BoundsError results if
+  ss is empty. Time: O(c log n)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(collection, key[, default])
+
+  Delete and return the mapping for key if it exists in collection, otherwise return default, or
+  throw an error if default is not specified.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> d = RobinDict("a"=>1, "b"=>2, "c"=>3);
+  
+  julia> pop!(d, "a")
+  1
+  
+  julia> pop!(d, "d")
+  ERROR: KeyError: key "d" not found
+  Stacktrace:
+  [...]
+  
+  julia> pop!(d, "e", 4)
+  4
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  pop!(cb::CircularBuffer)
+
+  Remove the element at the back.
+
+help?> popat!
+search: popat! DEPOT_PATH
+
+  popat!(a::Vector, i::Integer, [default])
+
+  Remove the item at the given i and return it. Subsequent items are shifted to fill the
+  resulting gap. When i is not a valid index for a, return default, or throw an error if default
+  is not specified. See also deleteat! and splice!.
+
+  │ Julia 1.5
+  │
+  │  This function is available as of Julia 1.5.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> a = [4, 3, 2, 1]; popat!(a, 2)
+  3
+  
+  julia> a
+  3-element Array{Int64,1}:
+   4
+   2
+   1
+  
+  julia> popat!(a, 4, missing)
+  missing
+  
+  julia> popat!(a, 4)
+  ERROR: BoundsError: attempt to access 3-element Array{Int64,1} at index [4]
+  [...]
+
+help?> size
+search: size sizeof sizehint! Csize_t resize! filesize Cssize_t displaysize @specialize
+
+  size(A::AbstractArray, [dim])
+
+  Return a tuple containing the dimensions of A. Optionally you can specify a dimension to just
+  get the length of that dimension.
+
+  Note that size may not be defined for arrays with non-standard indices, in which case axes may
+  be useful. See the manual chapter on arrays with custom indices.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (2,3,4));
+  
+  julia> size(A)
+  (2, 3, 4)
+  
+  julia> size(A, 2)
+  3
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  size(cb::CircularBuffer)
+
+  Return a tuple with the size of the buffer.
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  size(::PlotlyBase.Plot)
+
+  Return the size of the plot in pixels. Obtained from the layout.width and layout.height fields.
+
+julia> Dims
+Tuple{Vararg{Int64,N}} where N
+
+help?> Dims
+search: Dims ndims DimensionMismatch permutedims permutedims! PermutedDimsArray dropdims
+
+  Dims{N}
+
+  An NTuple of N Ints used to represent the dimensions of an AbstractArray.
+
+help?> axes
+search: axes WAVFormatExtension ProcessFailedException CapturedException TaskFailedException
+
+  axes(A, d)
+
+  Return the valid range of indices for array A along dimension d.
+
+  See also size, and the manual chapter on arrays with custom indices.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (5,6,7));
+  
+  julia> axes(A, 2)
+  Base.OneTo(6)
+
+  ───────────────────────────────────────────────────────────────────────────────────────────────
+
+  axes(A)
+
+  Return the tuple of valid indices for array A.
+
+  Examples
+  ≡≡≡≡≡≡≡≡≡≡
+
+  julia> A = fill(1, (5,6,7));
+  
+  julia> axes(A)
+  (Base.OneTo(5), Base.OneTo(6), Base.OneTo(7))
+
+julia> Dims
+Tuple{Vararg{Int64,N}} where N
+
+julia> Dims|>typeof
+UnionAll
+
+julia> Dims|>supertype
+Any
+
+julia> Dims|>subtypes
+Type[]
+
+julia> Dims|>subtype
+ERROR: UndefVarError: subtype not defined
+Stacktrace:
+ [1] top-level scope at REPL[294]:1
+
+julia> 

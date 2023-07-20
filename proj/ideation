@@ -1,0 +1,80 @@
+#Ideation
+
+##How frugal are orchestral composers with their orchestra's instrument- and instrument-player-composition?
+basically: playing -?-> sustain interrupt
+**e.g.** ianists and their ianos
+> if a piano P key K strike S yields a consistent audible-duration D
+> 	i can't S strike the P piano K key and, before it's audible-duration elapses, without interrupting it, audibly-strike the P piano K key. 
+> 	i can S strike the P piano K key and, before it's audible-duration elapses, without interrupting it, audibly-strike the p piano K key.
+
+specifying definate constraints on the cability of some instrument-players with some instruments can be crude. 
+
+-violin/viola/cello/stringbass-ist with one violin/viola/cello/stringbass
+ -cant bow/pluck two notes on the same string at once
+ -can bow/pluck a string at once
+ -can bow/pluck two strings at once
+ -can't bow and pluck at once
+ -can't bow/pluck more than two strings at once
+ -can bow one note per string
+-drum-mer with one drum
+ -can pedal/hit up to 2 components at once
+ -can hit and pedal at once
+...
+
+dont forget
+-introducing audible-duration suggests audible-chords, also not transitive
+
+##MIDI compression
+judge:
+-f is a file of MIDI type, i.e. f is in the set of files of MIDI type 
+-f == g file of MIDI type
+
+MIDI files are of the form <Header Chunk> <TrackChunk>+ where
+-<Header Chunk> = <chunk type> <length> <format> <ntrks> <division>
+ -<chunk type> is 4D 54 68 64
+ -32-bit <length> is 00 00 00 06, the number of bytes after <length> in the chunk
+ -16-bit <format> is 00 00, 00 01, or 00 02
+ -16-bit <ntrks> is 00 01 if format is 00 00,
+ -16-bit <division> is 0<15bit ticks per quaver> or 1<7bit negaitve SMPTE format><8bit ticks per frame> 
+-<Track Chunk> = <chunk type> <length> <Mtrkevent>+
+ -<chunk type> is 4D 54 72 6B
+ -32 bit <length>, the number of bytes after <length> in the chunk
+ -<Mtrkevent> = <delta-time> (<MIDI event> | <sysex event> | <meta-event>)
+  -<MIDI event> is any command followed by the appropriate number of data bytes
+  -<sysex event> = (F0 <length> <data>)|(F7 <length> <DATA>)
+   -<data> ends with F7, <data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+   -<DATA> is <length> bytes and <length> is in (80-FF)* (00-7F)
+  -<meta-event> = FF <type> (<length> <data> | 00)
+   -<type> is in 00-7F
+   -<data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+-refer to
+ - Paul D Lehrman. What is MIDI?. 2017.
+ - Standard MIDI Files 1.0. Published by The MIDI Manufacturers Association. Revised 1996 02.
+
+So:
+-<Header Chunk>s are 14 bytes (<chunk type> <length> <format> <ntrks> <division>)
+-if <format> is 00 00 then
+ -<ntrks> is 00 01 
+ -the <Track Chunk>= 4D 54 72 6B <length> <Mtrkevent>+ is 4+4+<length> bytes
+ -where <length> is in 00 00 00 02 - FF FF FF FF
+ -so <Track Chunk> is between 10 and 8+2^32-1 bytes
+-if <format> is 00 01 or 00 02 then
+ -we have one track (hence, one or more)
+ -no more than 2^16 - 1 tracks (because <length> in <Track Chunk> is 16 bits)
+ -so between 10 and (8+2^32-1)(2^16-1) = 2^48 - 2^32 + 2^19 - 2^16 - 2^3 + 1 = 281_470_682_202_105 bytes
+ -if <format> is 00 01 then tracks are 'simultaneous' (interpreted as aligned & unordered)
+ -if <format> is 00 02 then tracks are 'sequentially independent' (interpreted as any-ordered)
+-in any format
+ -permuting ~identical track chunks yields the same file
+ -rearranging whole track chunks within a file yields an equivalent file
+
+##build my own music making device and make music
+julia stuff
+ Mplay.jl
+ WAV.jl
+ MIDI.jl
+interfaces
+ Csound
+ fluidsynth
+
+

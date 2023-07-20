@@ -1,0 +1,24 @@
+MIDI file form
+<Header Chunk> <TrackChunk>+ where
+-<Header Chunk> = <chunk type> <length> <format> <ntrks> <division>
+-<Header Chunk> = 4D 54 68 64 00 00 00 06
+ -32-bit <chunk type> is 4D 54 68 64
+ -32-bit <length> is 00 00 00 06, number of bytes after <length> in the chunk
+ -16-bit <format> is 00 00, 00 01, or 00 02
+ -16-bit <ntrks> is 00 01 if format is 00 00
+ -16-bit <division> is 0<15bit ticks per quaver> or 1<7bit negaitve SMPTE format><8bit ticks per frame> 
+-<Track Chunk> = <chunk type> <length> <Mtrkevent>+ FF 2F 00
+ -32-bit <chunk type> is 4D 54 72 6B
+ -32 bit <length>, the number of bytes after <length> in the chunk
+ -<Mtrkevent> = <delta-time> (<MIDI event> | <sysex event> | <meta-event>)
+  -<MIDI event> is any command followed by the appropriate number of data bytes
+  -<sysex event> = (F0 <length> <data>)|(F7 <length> <DATA>)
+   -<data> ends with F7, <data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+   -<DATA> is <length> bytes and <length> is in (80-FF)* (00-7F)
+  -<meta-event> = FF <type> (<length> <data> | 00)
+   -<type> is in 00-7F
+   -<data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+   -e.g. FF 2F 00 is End Of Track
+-refer to
+ - Paul D Lehrman. What is MIDI?. 2017.
+ - Standard MIDI Files 1.0. Published by The MIDI Manufacturers Association. Revised 1996 02.
