@@ -1,4 +1,4 @@
-DO
+OD
 [ ] motivation
 [ ] dependencies
 [ ] AIFF file format
@@ -7,6 +7,7 @@ DO
 [ ] dependencies
 [ ] picture of sound module thing
 [ ] picture of key-board
+[ ] note [smpl](https://www.recordingblogs.com/wiki/sample-chunk-of-a-wave-file) and cue  chunks
 
 Motivation
 I want(ed) to make music with record(ing)s. Various computer applications exist.
