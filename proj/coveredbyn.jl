@@ -1,4 +1,3 @@
-
 n #obs in record
 N = n|>factor|>collect
 

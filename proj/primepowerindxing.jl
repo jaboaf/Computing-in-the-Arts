@@ -1,3 +1,6 @@
+#=desc essentially for some whole number n and x in 1:n,
+let C = map(pf -> pf[1]^pf[2],collect(factor(n)))
+return Tuple( vec(CartesianIndices(C))[x] )  =# 
 function primepowindx(x::Integer,n::Integer)
 	if n<1 || x<1 error("<1") end
 	if n<x primepowindx(x,n) end
@@ -26,7 +29,7 @@ primepowindx.(1:n,n) == (n |> factor |> collect |> (x-> first.(x) .^ last.(x)) |
 
 using Plots
 [(k |> factor |>collect |>(x-> first.(x) .^ last.(x)) |> sum )/k for k in 1:5000] |> scatter
-savefig("savings_by_n_of_elements.png")
+savefig("savings_by_n_of_elements.png") #sorta
 
 
 CartesianIndices(Tuple([ 1:p^a for (p,a) in N])).|>
@@ -56,10 +59,14 @@ function V(n)
 	vec
 end
 
+n=120#say
+A=zeros(Int,(n,n)); for (i,iv) in enumerate(V(n)) A[i,iv] == 1 end
 anim = Animation()
 for k in 1:n
 	frame(anim, scatter( Tuple.(findall(==(1),A^k)),ticks=[24:24:120;15:15:120;40:40:120],label=false,title="A^$k"))
 end
+gif(anim,"attempt4.gif")
+
 
 # why expend energy
 using FFTW

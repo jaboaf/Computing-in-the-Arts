@@ -7,7 +7,7 @@ extend each rep, r, to C^Z/pZ^ by  f->\sum_t in Z/pZ_ f(t)r(t)
 extend each class function, f, by  r->\sum_t in Z/pZ_ f(t)r(t)
 hence, p f = trace( \sum_r in Hom(Z/pZ,GL~1~(C))_ f(r)r^*^ )
 
-when |n|>1 not prime
+when |n|>1 not prime power
  Z/nZ ~ Z/aZ x Z/bZ for some |a|,|b|>1
  so
   |n|=|a||b|
