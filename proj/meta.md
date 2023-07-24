@@ -10,13 +10,17 @@ OD
 Motivation
 I want(ed) to make music with record(ing)s. Various computer applications exist.
 
-Most, many, and all i've encountered provide a 'GUI' natigated via point-click-drag. Not the interface I envision, nor accessible[^1]. There's a lot of magic that seems to go on behind the scenes and that freaks me the fuck out.
+Most, many, and all i've encountered provide a 'GUI' natigated via point-click-drag. Not the interface I envision using (or yearn for), nor accessible[^1]. There's a lot of magic that seems to go on behind the scenes and that freaks me the fuck out.
 
-Also, I was very sad when I plugged in an analog keyboard to the USB port on my Mac and couln't associate arbitrary sounds to *those* keys (112 buttons, 1 wheel), not to mention, exercising options.
+Also, I was very sad when I plugged in an analog keyboard to the USB port on my Mac and couln't associate arbitrary sounds to *those* keys (112 buttons, 1 wheel) through various applications.
+?what other kinds of keys are there?
 
 ![](keyboard.HEIC)
 
+
+not to mention, exercising options.
 So real device interface does not always coincide with application interface.
+
 
 EFFECTs
 
