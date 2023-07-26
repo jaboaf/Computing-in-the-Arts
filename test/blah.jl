@@ -3,7 +3,6 @@ read("endianess",UInt8)
 read("endianess",UInt16)
 read("endianess",UInt32)
 read("endianess",Int8)
-Int8(0x44)
 read("endianess",Int16)
 
 
@@ -16,4 +15,7 @@ schedule(tsk)
 =#
 
 for f in dir()
-	wavread(f,format="native")
+	w = wavread(f,format="native")
+	f
+	WAV.getformat(w[4]).compression_code
+	isformat(WAV.getformat(ans),WAVE_FORMAT_PCM)

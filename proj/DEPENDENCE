@@ -1,4 +1,4 @@
 The Julia Programming Language. Hence C, LLVM, Scheme, ... . An Operating system. ... 
->julia InteractiveUtils.versioninfo()
+julia>InteractiveUtils.versioninfo()
 WAV.jl
 Primes.jl
