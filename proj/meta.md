@@ -30,12 +30,28 @@ tc4 = wavread("../test/trumpet-C4.wav", format="native");
 wavplay([zeros(eltype(tc4[1]),length(tc4[1])) tc4[1] ],tc4[2]);
 wavplay([tc4[1] zeros(eltype(tc4[1]),length(tc4[1])) ],tc4[2])
 ```
+WORKS
+```julia
+io=open("filename.html","w");
+show(io,MIME("text/html"),TC4)
+```
 
-scheduling a task
+SCHEDULING A TASK (expression or callable symbol) YIELDS IMMEDIATELY bc a.s. ccall gets higher order precesence than a jl expr to be passed to eval
+~mayb because wavplay calls CFRunLoopRun() after AudioQueueStart
+~mayb just write your own callback...
+~mayb @threadccall every ccall ? does this function the same for @cfunction defined stuff
+~mayb @inline shit ?..
+> just get down and dirty with ccall s to AudioToolbox and CoreAudio.
+> or figure it out in C.
+> if neither of those work its your fault
+
+PS WAV.jl alternatives exist. idt any can natively loop & esp do that and let you mutate the class function. PortAudio.jl does provide interface for callback of some kind which supports C_NULL exclusively.
+
+
+
 Base.Sys|>names
 Base.Sys.cpu_summary()
 
-io=open("filename.html","w");
-show(io,MIME("text/html"),TC4)
+
 
 [^1]: The MIDI Association. Music Accessibility Standard Webinar May 27. https://www.youtube.com/watch?v=PRjvOY9_X28
