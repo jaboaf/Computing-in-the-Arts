@@ -13,9 +13,3 @@ istaskdone(tsk)
 istaskstarted(tsk)
 schedule(tsk)
 =#
-
-for f in dir()
-	w = wavread(f,format="native")
-	f
-	WAV.getformat(w[4]).compression_code
-	isformat(WAV.getformat(ans),WAVE_FORMAT_PCM)

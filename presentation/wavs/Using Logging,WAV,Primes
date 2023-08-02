@@ -1,0 +1,26 @@
+Using Logging,WAV,Primes
+A = ones(Int, 4, 4)
+v = ones(100)
+@info "Some variables"  A  s=sum(v)
+?to_indices
+readdir|>methods
+scatter(F)
+2^2 * 3^2 * 5^2 * 7^2 = 44100
+PROTECT 12345678
+9 0 - =
+( ) - =
+
+
+F|>dump
+
+@info macro pretty useful
+
+#note the following
+typeof(F|>dump)
+
+for 
+
+baremodule
+
+
+TC4 = wavplay("trumpet-C4.wav")

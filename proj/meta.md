@@ -44,13 +44,17 @@ SCHEDULING A TASK (expression or callable symbol) YIELDS IMMEDIATELY bc a.s. cca
 > just get down and dirty with ccall s to AudioToolbox and CoreAudio.
 > or figure it out in C.
 > if neither of those work its your fault
+FYI 
+```julia
+Base.Sys|>names Base.Sys.cpu_summary()
+```
 
 PS WAV.jl alternatives exist. idt any can natively loop & esp do that and let you mutate the class function. PortAudio.jl does provide interface for callback of some kind which supports C_NULL exclusively.
-
-
-
-Base.Sys|>names
-Base.Sys.cpu_summary()
+html output works which is nice
+```julia
+io=open("filename.html","w");
+show(io,MIME("text/html"),TC4)
+```
 
 
 
