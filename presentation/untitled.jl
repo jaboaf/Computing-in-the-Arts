@@ -13,14 +13,6 @@ const cdhz = 44100
 # A for audio output
 # V for viusal output
 # AV for audio/visual output
-println("|name|compression_code|nchannels|sample_rate|bytes_per_second|block_align|nbits")
-println("|---"^7)
-for f in readdir("wavs")
-if f[length(f)-2 : end] == "wav"
-    F = wavread("wavs/$f",format="native")[4]|>WAV.getformat;
-    println("$f | $(F.compression_code) | $(F.nchannels) | $(F.sample_rate) | $(F.bytes_per_second) | $(F.block_align) | $(F.nbits) ")
-end
-end
 
 pc4 =  wavread("wavs/piano-C4.wav",format="native");
 pc5 =  wavread("wavs/piano-C5.wav",format="native");

@@ -3,7 +3,8 @@ wav patchmap @ mid .ticks
 
 https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-6-201506-I!!PDF-E.pdf
 
-
+names:
+CD-DA bits per sector # 75sectors = 1 s
 
 We just couldn't get our stage right entry correct.
 
@@ -35,36 +36,78 @@ Many do play aloud musical things. Yet, few, play.
 If blessed to see one playing, what do we mean by that?
 At some point we definatley do sense. In what sense?
 
-I wonder because not much else cuts across a partition like musical things: ebbing in the woeful, vibrant among the intimate, and a durable pulse through and throughout communities. It sure seems natural– not merely human. And we have yet to see a the greater part of a century globally offering the option to record, playback, copy, edit, and transmit audio and visual matrial.
+I wonder because not much else cuts across a partition like musical things: ebbing in the woeful, vibrant among the intimate, and a durable pulse through and throughout community. It sure seems natural– not merely human. And we have yet to see a the greater part of a century globally offering the option to record, playback, copy, edit, and transmit audio and visual matrial.
 
 The effect is undisputably generally positive. Far beyond that– people deeply appreciate and value musical works. How much so is a spectacle:
 
     At the end of 2021, Bruce Springsteen exchanged master recordings and publishing rights to 20 studio albums with Sony for an estimated $500,000,000. Suppose: there are 20 tracks per album, tracks and their associated rights may be totally ordered by dollar value, and the dollar value of a track with its associated rights is proportional to 1 divided by its rank. And these values partition the total of $500,000,000.
 
     The highest value track is:
-        1
-        // 1228884515967872712251672909004982497901388975685728237120075555522246093340961692523451736163237183161567142377749856340898436843471517588948954743006778882051196591337071
-        //187046829073114601650818088978393541681209145313523704295048172193984970320336574588961640760313676135013142307766553383804638697532241829188594060015362048530542880992000
-    -th of half a billion dollars; which, rounding to the nearest penny, is  $76,104,315.19 for the highest $-value track. If the track is 4 minutes of proper CD stero audio:
-        44100frames/second * 24bits/channel * 2channels/frame * 60seconds * 4 = 508,032,000 bits or 63,504,000 bytes 
-    Then the highest $-value track is $1.20 per byte with its associated rights or $0.15 per bit and associated right.
+        187046829073114601650818088978393541681209145313523704295048172193984970320336574588961640760313676135013142307766553383804638697532241829188594060015362048530542880992000 // 1228884515967872712251672909004982497901388975685728237120075555522246093340961692523451736163237183161567142377749856340898436843471517588948954743006778882051196591337071
+    of half a billion dollars, which is  $76,104,315.19 to the nearest penny. If that track is 4 minutes of CD digital audio:
+        4 * 60seconds * 44100frames/second * 2channels/frame * 16bits/channel = 338,688,000 bits or 42,336,000 bytes 
+    Then the highest $-value track is $1.80 per byte with associated rights or $0.22 per bit and associated right.
 
 https://www.bbc.com/news/entertainment-arts-59680797
 https://www.billboard.com/pro/bruce-springsteen-sells-masters-publishing-sony/
 
-    Only a few collections of data with rights that play in that $-total ballpark come to mind. All of them are financial. Relative to $0.15 per bit and associated right, these collections are likely closer to light year away than not. So an arrangement of bits is valued when its a valued arrangement. In particular, realizing its value requires no interpretation, just some commonplace hardware. Choosing to 'protect' that value, via some method; well, thats up to the rights holder.
+    Only a few collections of data with rights that play in that $-total ballpark come to mind. All of them are financial. Relative to $0.22 per bit and associated right, these collections are likely closer to light year away than not. So an arrangement of bits is valued when its a valued arrangement. In particular, realizing its value requires no interpretation, just some commonplace hardware. Choosing to 'protect' that value, via some method; well, thats up to the rights holder.
 
-A MIDI file will not do. It needs to be interpreted, requiring less common software capabilities which permit variation in the content delivered through the same audio interface on the same device. This is by no means a pitfall. It's the sacrifice made for abstraction, smaller file sizes, and plural interpretation.
+A MIDI file will not do. They are to be interpreted. Requiring less common software (capability), permiting variation in the content delivered through the same audio interface on the same device.
 
-    Worthwhile and incredibly executed. (A great appreciation is discovered by reading some 1600-odd pages of the FIX Protocol)
+DUMP:
+- Worthwhile in its mission and executed, incredibly. (A great appreciation is discovered by reading some 1600-odd pages of the FIX Protocol)
+
+Are you sure about that? In "What is MIDI?" published by the MIDI Association, Lehrman writes,
+> It is not "music", in that a set of MIDI commands is not the same as a recording, say, of a French horn playing a tune. However, those commands can *describe* the horn performance in such a way that a device receiving them–such as a synthesizer–can *reconstruct* the horn tune with perfect accuracy.
+
+**A French horn playing a tune!** Awesome. Anyways, in the spirit and use of MIDI, I'm sure(-ish). In order for MIDI-file distribution of audio to be on par with digital audio, devices must yeild audio output that is identical or perceptually similar (the -ish) to that produced using digital audio.
+
+MEH: what is a (horn) tune?  How do we know its reconstruction, accurate or not? DOT DOT DOT]
+
+Foregoing digital audio for a MIDI description warrants interpretation. In spirit, this yields an abstraction with the orignal flexibility in the digital audio, but also how and when it is realized. To earn the latter benefits, in the letter of it, we must actually forgo something when opting for a MIDI description. Something is foregone, typically, but not nessisarily.
+
+> MIDI vs Digitized Audio
+    > the MIDI file does not contain the sampled audio data, it contains only the instructions needed by a synthesizer to play the sounds. These instructions are in the form of MIDI messages, which instruct the synthesizer which sounds to use, which notes to play, and how loud to play each note. The actual sounds are then generated by the synthesizer.
+> MIDI Basics
+    > The synthesizer receiving the MIDI data must generate the actual sounds
+> Synthesizer Basics
+    > Sounds
+        > The different sounds that a synthesizer or sound generator can produce are sometimes called "patches", "programs", "algorithms", or "timbres". Programmable synthesizers commonly assign "program numbers" (or patch numbers) to each sound. ... The association of all patch numbers to all sounds is often referred to as a patch map.
+
+Conclude:
+In Mono Mode: we can embedd 14 bits of LPCM on a channel
+- 2 7-bit places
+- e.g. (note,vel) -> vel*128 + note
+In Poly Mode: we can embedd 896 bits of LPCM on a channel
+- 128 7-bit places
+- e.g. (note,vel) -> vel*128^note
+
+ticks per quaver is 15 bits
+microseconds per quaver is 24 bits
+
+
+
+Co-Creation sorta a bullshit term
+- dependence vs. stateted assumtion disguising a restriction of evaluation domain
+- depenence of output on (user) input does not make it co-creative. Thats just a more pleasant version of open-source.
+Form-centric research agenda
+- thats just not how artists are partitioned
+Randomness:
+- if the image is finite, then if the program/function/algorithm is random and supported on the image, its not exactly creative
+- depenent on what should be clear.
+If its not fixed under equivalent variation, sorry pal...
+- RGB,RBG,GRB,BGR,BRG,GBR 
+- Patch Map
 
 
 
 PAGE
 Lerdhal Quote 104
+
 2-3 low/high level and quot about audio recordings
 6-7
-    - score vs performacnce
+    - score vs performance
     -transformative vs generative vs sequence
     -instrument vs player
 9 processing chain
@@ -73,6 +116,8 @@ Lerdhal Quote 104
     - arpeggiate harmonizer inverter stretcher sawer looper 181-2
     sequencing 191
 
+
+spectromorphology-explaining-sound-shapes.pdf
 
 Three points:
 - Existing programs have room to grow.
@@ -89,6 +134,10 @@ Three points:
 
 
 
+https://metacreation.net/calliope/
+Calliope: An Online Generative Music System for Symbolic Multi-Track
+Composition. P. 251. https://computationalcreativity.net/iccc22/wp-content/uploads/2022/08/ICCC22_proceedings.pdf
+also APOLLO
 
 
 
@@ -96,11 +145,10 @@ Humans Appreciated, , and valued.
 
 At a very practical level.
 
-https://www.rollingstone.com/pro/features/famous-musicians-selling-catalog-music-rights-1114580/?sub_action=logged_in
-https://www.rollingstone.com/pro/features/universal-music-bob-dylan-catalog-survival-1100390/
+SCANNED SYNTHESIS PATENT ?? https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/D0CB4F7Fd01.gif
+https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/ScannedSynthesis.pdf
 
-
-
+MIDI GM 1 Sound Set https://www.midi.org/specifications-old/item/gm-level-1-sound-set
 
 midi <: 
 wavpatchmap <: [128]-> wav.data
@@ -113,3 +161,38 @@ if f[length(f)-2 : end] == "wav"
     out("$f | $(F.compression_code) | $(F.nchannels) | $(F.sample_rate) | $(F.bytes_per_second) | $(F.block_align) | $(F.nbits) |$(wavread("wavs/$f",format="native")[4])")
 end
 end
+
+
+https://www.auralsonology.com/
+https://www.spectromusic.com/writing-with-sonova/
+
+
+
+[]: Annie Dillard. Pilgrim at Tinker Creek. 2007. HarperCollins Publishers Inc.
+[]: Jim Heckroth. Tutorial on MIDI and Music Synthesis. Revised April 2006. MIDI Manufacturers Association.
+[]: Paul D Lehrman. What is MIDI?. 2017
+[]: Standard MIDI Files 1.0. Revised February 1996. MIDI Manufacturers Association.
+[]: Paul D Lehrman, Howard Massey. General MIDI System Level 1 Developer Guidelines For Manufacturers and Composers. Second Revision July 1998. MIDI Manufacturers Association
+[]: Steve Reich. Music as a Gradual Process in Writings about Music.
+https://people.ucsc.edu/~dej/migrated/Ewha%20Materials/RHYTHM/Reich.Writings.pdf)
+[]: Dennis Smalley. Spectromorphology: explaining sound-shapes. Organised Sound, Volume 2, Issue 2, August 1997, Pages 107–126. https://doi.org/10.1017/S1355771897009059
+[]: Dennis Smalley. Space-form and the acousmatic image. Organised Sound, Volume 12, Issue 1, April 2007, Pages 35-58. https://doi.org/10.1017/S1355771807001665
+[]: Manuella Blackburn. The Visual Sound-Shapes of Spectromorphology: an illustrative guide to composition. Organised Sound, Volume 16 , Issue 1: Denis Smalley: his influence on the theory and practice of electroacoustic music , April 2011, Pages 5-13. https://doi.org/10.1017/S1355771810000385 
+
+
+
+Jason Yust, Steve Reich’s Signature Rhythm and an Introduction to Rhythmic
+Qualities, Music Theory Spectrum, Volume 43, Issue 1, Spring 2021, Pages 74–90,
+[https://doi.org/10.1093/mts/mtaa017](https://doi.org/10.1093/mts/mtaa017)
+
+Ragnhild Brøvig-Hanssen, Bjørnar Sandvik, Jon Marius Aareskjold-Drecker, Anne
+Danielsen, A Grid in Flux: Sound and Timing in Electronic Dance Music, Music
+Theory Spectrum, Volume 44, Issue 1, Spring 2022, Pages 1–16,
+[https://doi.org/10.1093/mts/mtab013](https://doi.org/10.1093/mts/mtab013)
+
+Jonathan De Souza, Melodic Transformation in George Garzone’s Triadic Chromatic
+Approach; or, Jazz, Math, and Basket Weaving, Music Theory Spectrum, Volume 44,
+Issue 2, Fall 2022, Pages 213–230,
+[https://doi.org/10.1093/mts/mtac003](https://doi.org/10.1093/mts/mtac003)
+
+
