@@ -67,6 +67,104 @@ MEH: what is a (horn) tune?  How do we know its reconstruction, accurate or not?
 
 Foregoing digital audio for a MIDI description warrants interpretation. In spirit, this yields an abstraction with the orignal flexibility in the digital audio, but also how and when it is realized. To earn the latter benefits, in the letter of it, we must actually forgo something when opting for a MIDI description. Something is foregone, typically, but not nessisarily.
 
+This consideration is essentially obsolete in the context of computer programs/systems/ applications leveraging MIDI data for a creative end. Robert Rowe describes a number *interactive computer music systems* and considers the impacts of music theory, music cognitition, and artificial intelligence on their design. The broad exposition was essential in the devising a path through to other ideas without loops.
+
+Orthogonal to his motivation for classifications, we restrict to MIDI-driven interactive computer music systems, and identify two characteristics of programs:
+
+    1) MIDI data depenence
+    - score-driven aka MIDI-file dependent
+    - performance-driven aka MIDI-stream dependent
+
+    compositional   = ¬ performance ∩ score
+    improvisational = performance ∩ ¬score
+    realizational   = performance ∩ score
+
+    2) MIDIation
+    - indicative:   shows the user something MIDI data depenent.
+    - accomaning:   supplements MIDI data: not interfering with its realization
+    - augmenting:   alters MIDI data & not supplemental
+
+    collaborate = accompany ⊔ augment
+    supplement  = indicate ⊔ accompany
+    contribute  = indicate ⊔ accompany ⊔ augment
+                = supplement ⊔ augment
+                = indicate ⊔ collaborate
+
+Rowe's *Cypher* is realizational. The listener component is indicative and improvisational. And the player component can be augmenting, yet the user can always ensure it is accomaning by indicating it send output to any number of empty/free channels or by indiciating it should not respond to MIDI events on any channel. This component is realizational.
+
+There are plently of computer music systems. Each may split into components which may itself split over this categorization dependening on something or other. Research on computer programs or applications tends to focuses on certain flavors *the transformative and innovative * (\* sholder shimmy\*) or those managing to buzz the right ... words.
+
+Don't impart that on domain of the above labelling scheme. Starting with 1, MIDI data depenence, its clear digital-audio-workstations-like-things, sleek or dank, aren't forgotted. Computer music systems going 'beyond' by accomanying scores or performances programmatically earn more research attention. One presented at the Thirteenth International Conference on Computational Creativity is *Calliope: An Online Generative Music System for Symbolic Multi-Track Composition*[^Calliope]
+
+
+It is a web application
+It assists users in performing a variety of multi-track composition tasks in the symbolic domain
+Is is presented in context machine learning-based (ML) computer-assisted composition sysetms
+it supports the General MIDI (GM) standard for MIDI playback
+
+user can
+    upload MIDI files,
+    visualize and edit MIDI tracks
+    generate partial or complete multi-track content using the Multi-Track Music Machine (MMM)
+    export generated MIDI materials
+    stream MIDI playback from the system to their favorite Digital Audio Workstation (DAW).
+
+
+
+CO-CREATION
+In terms of co-creation, the user can configure multiple attribute controls for generation (instrument type, node density, polyphony range, note length range, bar selection within a piece).
+Those controls set the creative context for the system to generate, allowing the user to steer the generative behavior of the model and guide the composition process.
+The system generates new musical phrases by outputting multi-track polyphonic sequences of notes for the set of selected bars and in accordance to the attribute control values.
+The user listens and analyzes the resulting output and updates the generation request accordingly. The steps involved in Calliope’s interactive workflow are shown in
+
+
+Generation of new MIDI excerpts can be done in batch and can be combined with active playback listening for an enhanced assisted-composition workflow.
+
+
+We present a demonstration of the system, its features, generative parameters and describe the co-creative workflows that it affords.
+We presented the Calliope system, a co-creative interface for multi-track music generation
+We situated our system with respect to other existing CAC systems and discussed the co-creative aspect of the system along with the compositional workflow it affords.
+
+The aim is to enable users to effectively co-create with a generative system.
+
+With the rise of artificial intelligence in recent years, there has been a rapid increase in its application towards creative domains, including music. 
+
+also APOLLO
+
+
+Many machine learning-based (ML) systems have been developed for computer-assisted composition including:
+    Flow Machines (Pachet 2004),
+    Style Machine (Anderson, Eigenfeldt, and Pasquier 2013),
+    Magenta Studio (Roberts et al. 2019),
+    Manuscore (Maxwell et al. 2012),
+    Morpheus (Herremans and Chew 2017);
+demo systems such as
+    Sornting,
+    DrumVAE (Thio et al. 2019),
+    DeepDrum (Makris, Kaliakatsos-Papakostas, and Kermanidis 2018)
+and commercial systems such as
+    AIVA 1,
+    Spliqs 2 and 
+    Melody Sauce
+
+
+Those that go 'beyond' by unobscured augmenting are less abundant and earn less attention.
+
+    **sex appeal is not a prerequisite**
+
+interactive computer music systems
+
+
+
+    -transformative vs generative vs sequence
+    -instrument vs player
+208 quote
+9 processing chain
+164
+    -sequence vs generative vs transformative
+    - arpeggiate harmonizer inverter stretcher s
+
+
 > MIDI vs Digitized Audio
     > the MIDI file does not contain the sampled audio data, it contains only the instructions needed by a synthesizer to play the sounds. These instructions are in the form of MIDI messages, which instruct the synthesizer which sounds to use, which notes to play, and how loud to play each note. The actual sounds are then generated by the synthesizer.
 > MIDI Basics
@@ -85,6 +183,9 @@ In Poly Mode: we can embedd 896 bits of LPCM on a channel
 
 ticks per quaver is 15 bits
 microseconds per quaver is 24 bits
+
+
+
 
 
 
@@ -119,36 +220,21 @@ Lerdhal Quote 104
 
 spectromorphology-explaining-sound-shapes.pdf
 
+SCANNED SYNTHESIS PATENT ?? https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/D0CB4F7Fd01.gif
+https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/ScannedSynthesis.pdf
+
+MIDI GM 1 Sound Set https://www.midi.org/specifications-old/item/gm-level-1-sound-set
+
 Three points:
 - Existing programs have room to grow.
     - Acclaimed or not, I have yet to be sent a computer generated musical thing by a friend.
     - 
 
--Here's a program that supports riches.
-
+-Heres a program that supports riches.
     - Length (number of frames) is a geometrically distributed whole number: Prob(Length=l) = 1/2^l
     - Given a length l, each bit in the first l frames is 1 w.p. 1/2 and 0 w.p. 1/2.
     - Voila! Every 0x0001-format wav file has positive probability.
-
-- I'm still waiting for the song of the summer. AI has not delivered.
-
-
-
-https://metacreation.net/calliope/
-Calliope: An Online Generative Music System for Symbolic Multi-Track
-Composition. P. 251. https://computationalcreativity.net/iccc22/wp-content/uploads/2022/08/ICCC22_proceedings.pdf
-also APOLLO
-
-
-
-Humans Appreciated, , and valued.
-
-At a very practical level.
-
-SCANNED SYNTHESIS PATENT ?? https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/D0CB4F7Fd01.gif
-https://ccrma.stanford.edu/courses/250a-fall-2013/lectures/scan/ScannedSynthesis.pdf
-
-MIDI GM 1 Sound Set https://www.midi.org/specifications-old/item/gm-level-1-sound-set
+- Im still waiting for the song of the summer. AI has not delivered.
 
 midi <: 
 wavpatchmap <: [128]-> wav.data
@@ -178,8 +264,9 @@ https://people.ucsc.edu/~dej/migrated/Ewha%20Materials/RHYTHM/Reich.Writings.pdf
 []: Dennis Smalley. Spectromorphology: explaining sound-shapes. Organised Sound, Volume 2, Issue 2, August 1997, Pages 107–126. https://doi.org/10.1017/S1355771897009059
 []: Dennis Smalley. Space-form and the acousmatic image. Organised Sound, Volume 12, Issue 1, April 2007, Pages 35-58. https://doi.org/10.1017/S1355771807001665
 []: Manuella Blackburn. The Visual Sound-Shapes of Spectromorphology: an illustrative guide to composition. Organised Sound, Volume 16 , Issue 1: Denis Smalley: his influence on the theory and practice of electroacoustic music , April 2011, Pages 5-13. https://doi.org/10.1017/S1355771810000385 
-
-
+[]: BT.709 : Parameter values for the HDTV standards for production and international programme exchange. https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-6-201506-I!!PDF-E.pdf
+[^Calliope]: Renaud Bougueng Tchemeube, Jeff Ens, Philippe Pasquier. Calliope: An Online Generative Music System for Symbolic Multi-Track
+Composition. Pages 251-255. https://computationalcreativity.net/iccc22/wp-content/uploads/2022/08/ICCC22_proceedings.pdf
 
 Jason Yust, Steve Reich’s Signature Rhythm and an Introduction to Rhythmic
 Qualities, Music Theory Spectrum, Volume 43, Issue 1, Spring 2021, Pages 74–90,
@@ -196,3 +283,6 @@ Issue 2, Fall 2022, Pages 213–230,
 [https://doi.org/10.1093/mts/mtac003](https://doi.org/10.1093/mts/mtac003)
 
 
+# Reflection
+I should learn how to build my own (computer) hardware.
+Instagram Poll: DO YOUR DREAMS HAVE SOUND?
