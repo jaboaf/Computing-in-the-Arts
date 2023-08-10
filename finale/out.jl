@@ -94,42 +94,148 @@ Rowe's *Cypher* is realizational. The listener component is indicative and impro
 
 There are plently of computer music systems. Each may split into components which may itself split over this categorization dependening on something or other. Research on computer programs or applications tends to focuses on certain flavors *the transformative and innovative * (\* sholder shimmy\*) or those managing to buzz the right ... words.
 
-Don't impart that on domain of the above labelling scheme. Starting with 1, MIDI data depenence, its clear digital-audio-workstations-like-things, sleek or dank, aren't forgotted. Computer music systems going 'beyond' by accomanying scores or performances programmatically earn more research attention. One presented at the Thirteenth International Conference on Computational Creativity is *Calliope: An Online Generative Music System for Symbolic Multi-Track Composition*[^Calliope]
+Don't impart that on domain of the above labelling scheme. Starting with 1, MIDI data depenence, its clear digital-audio-workstations-like-things, sleek or dank, aren't forgotted. Computer music systems going 'beyond' by accomanying scores or performances programmatically earn more research attention. One presented at the Thirteenth International Conference on Computational Creativity is *Calliope: An Online Generative Music System for Symbolic Multi-Track Composition*[^Calliope]. 
 
+> We presented the Calliope system, a co-creative interface for multi-track music generation. We presented its features in- cluding the ability to view and play MIDI files, the ability to select bars to guide partial generation, and complete set of global (model-level) and local (track-specific) controls and how their combination allows users to tackle a broad range of compositional tasks. We situated our system with respect to other existing CAC systems and discussed the co-creative aspect of the system along with the compositional workflow it affords.
 
-It is a web application
-It assists users in performing a variety of multi-track composition tasks in the symbolic domain
-Is is presented in context machine learning-based (ML) computer-assisted composition sysetms
-it supports the General MIDI (GM) standard for MIDI playback
+Also,
+> It is a web application
+> It assists users in performing a variety of multi-track composition tasks in the symbolic domain
+> Is is presented in context machine learning-based (ML) computer-assisted composition sysetms
+> it supports the General MIDI (GM) standard for MIDI playback
 
-user can
-    upload MIDI files,
-    visualize and edit MIDI tracks
-    generate partial or complete multi-track content using the Multi-Track Music Machine (MMM)
+'The user can upload MIDI files,
+  visualize and edit MIDI tracks
     export generated MIDI materials
-    stream MIDI playback from the system to their favorite Digital Audio Workstation (DAW).
+              stream MIDI playback from the system to their favorite Digital Audio Workstation (DAW).
+and generate partial or complete multi-track content using the Multi-Track Music Machine (MMM)
+'
+Awesome. I tried to use it with each of the .mid HW files for a number of instruments and every time it would not generate anything or supply one drawn out final note in the last bar (free note density, broad range of batch sizes). MIDI files were never generated in the frame to the right on Firefox or Chrome.
+Replicating the example on the home page stalled both browsers. The MIDI files uploaded more than 3 minites of Bach. It stalled for more than half of the requests for 4 or 8 bars, some with infilling, others without. Generation requests did yield MIDI files.
+
+That's just a taste of Callioe of Calliope's taste with some MIDI files for some values of parameters named (instrument type, node density, polyphony range, note length range, bar selection within a piece).
+They do not describe the generative mechanism in the paper but you can read about it (here)[https://github.com/AI-Guru/MMM-JSB/tree/main], tagged
+
+> (MMM: Exploring Conditional Multi-Track Music Generation with the Transformer and the Johann Sebastian Bach Chorales Dataset)[https://github.com/AI-Guru/MMM-JSB/tree/main#mmm-exploring-conditional-multi-track-music-generation-with-the-transformer-and-the-johann-sebastian-bach-chorales-dataset]
+
+In helpers/noteseqhelpers.py they write
+```
+NOTE_LENGTH_16TH_120BPM = 0.25 * 60 / 120
+BAR_LENGTH_120BPM = 4.0 * 60 / 120
+```
+then define `set_note_sequence_tempo(note_sequence, target_tempo)` and `split_note_sequence_into_bars(note_sequence, absolute_times, threshold=0.0, quantized=False)` the latter begins with
+```
+# We cannot handle tempo changes.
+raise_exception_on_multiple_tempos(note_sequence)
+```
+In mmmtrainer they write
+```
+# Create the model.
+model_config = GPT2Config(
+        vocab_size=tokenizer.get_vocab_size(),
+        #bos_token_id=tokenizer.token_to_id("PIECE_START"),
+        #eos_token_id=tokenizer.token_to_id("PIECE_END"),
+        pad_token_id=tokenizer.token_to_id("[PAD]"),
+        n_head=self.config.n_head,
+        n_layer=self.config.n_layer,
+        n_embd=self.config.n_embd,
+        n_positions=self.config.n_positions,
+        n_ctx=self.config.n_ctx
+    )
+logger.info(model_config)
+model = GPT2LMHeadModel(model_config)
+```
+What is GPT2?
+> It’s a causal (unidirectional) transformer pretrained using language modeling on a very large corpus of ~40 GB of text data.[^https://huggingface.co/docs/transformers/model_doc/gpt2]
+The abstract of the paper Language Models are Unsupervised Multitask Learners by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskeve is
+> GPT-2 is a large transformer-based language model with 1.5 billion parameters, trained on a dataset[1] of 8 million web pages. GPT-2 is trained with a simple objective: predict the next word, given all of the previous words within some text. The diversity of the dataset causes this simple goal to contain naturally occurring demonstrations of many tasks across diverse domains. GPT-2 is a direct scale-up of GPT, with more than 10X the parameters and trained on more than 10X the amount of data.
+They model the data at a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or describe the bit depth of the 1.5 Billion parameters.
+Wait what is the data again? ~40 GB of text.
+> 4 * 10^10 / (1.5 * 10^9) = 8 * 10 / 3 = 80/3
+A parameter has got to be bit or are we just fooling around p a r a m e t e r s. I promise ot be fair! Suppose k is the maximum number of parameter values that (when substitued) do not separate points in the remaining parameters ( of which there are 1.5*10^9 - k).
+
+    consider
+        80*8 / (3 * 2^(1.5*10^9 - k) )
+        we or at least i don't know probability function (maybe someone else does?)
+        so k is unknown ! who knows?
+        who cares?
+        the expression is expressive enought for me
+    you should prolly fiddle with the web appliation (here)[https://metacreation.net/calliope/] to get a sense of the calliber.
+This might be a good time to mention that the Standard MIDI Files 1.0 specifies that:
+```
+MIDI files are of the form <Header Chunk> <TrackChunk>+ where
+-<Header Chunk> = <chunk type> <length> <format> <ntrks> <division>
+ -<chunk type> is 4D 54 68 64
+ -32-bit <length> is 00 00 00 06, the number of bytes after <length> in the chunk
+ -16-bit <format> is 00 00, 00 01, or 00 02
+ -16-bit <ntrks> is 00 01 if format is 00 00,
+ -16-bit <division> is 0<15bit ticks per quaver> or 1<7bit negaitve SMPTE format><8bit ticks per frame> 
+-<Track Chunk> = <chunk type> <length> <Mtrkevent>+
+ -<chunk type> is 4D 54 72 6B
+ -32 bit <length>, the number of bytes after <length> in the chunk
+ -<Mtrkevent> = <delta-time> (<MIDI event> | <sysex event> | <meta-event>)
+  -<MIDI event> is any command followed by the appropriate number of data bytes
+  -<sysex event> = (F0 <length> <data>)|(F7 <length> <DATA>)
+   -<data> ends with F7, <data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+   -<DATA> is <length> bytes and <length> is in (80-FF)* (00-7F)
+  -<meta-event> = FF <type> (<length> <data> | 00)
+   -<type> is in 00-7F
+   -<data> is <length> bytes, and <length> is in (80-FF)* (01-7F)
+```
+So:
+-<Header Chunk>s are 14 bytes (<chunk type> <length> <format> <ntrks> <division>)
+-if <format> is 00 00 then
+ -<ntrks> is 00 01 
+ -the <Track Chunk>= 4D 54 72 6B <length> <Mtrkevent>+ is 4+4+<length> bytes
+ -where <length> is in 00 00 00 02 - FF FF FF FF
+ -so <Track Chunk> is between 10 and 8+2^32-1 bytes
+-if <format> is 00 01 or 00 02 then
+ -we have one track (hence, one or more)
+ -no more than 2^16 - 1 tracks (because <length> in <Track Chunk> is 16 bits)
+ -so between 10 and (8+2^32-1)(2^16-1) = 2^48 - 2^32 + 2^19 - 2^16 - 2^3 + 1 = 281_470_682_202_105 bytes
+ -if <format> is 00 01 then tracks are 'simultaneous' (interpreted as aligned & unordered)
+ -if <format> is 00 02 then tracks are 'sequentially independent' (interpreted as any-ordered)
+-in any format
+ -permuting ~identical track chunks yields the same file
+ -rearranging whole track chunks within a file yields an equivalent file
+
+From here we go one of two or three directions
+"Symbolic"? MIDI drill down
+-> patchmap variations
+-> "synthesizer" device
+gettin jiggy with data
+-> a lady's silly sonification thoughts
+oh yeah and wiggling sample to more useful and percepually dimilar fake sampling rates! PLOTS
+-> implementing the the cyclic group of order 44100
+    -> bc path length situation w compled embeddings
+    -> soln (positive) cyclic rep (or narrowly Z_2 & projective which is strait bools)
+    -> booling with bools, bool tiles
+
+
+ 
+
+
+
+  they defin
+and the def of  begins with
+> # We cannot handle tempo changes.
+> raise_exception_on_multiple_tempos(note_sequence)
 
 
 
 CO-CREATION
-In terms of co-creation, the user can configure multiple attribute controls for generation (instrument type, node density, polyphony range, note length range, bar selection within a piece).
 Those controls set the creative context for the system to generate, allowing the user to steer the generative behavior of the model and guide the composition process.
 The system generates new musical phrases by outputting multi-track polyphonic sequences of notes for the set of selected bars and in accordance to the attribute control values.
 The user listens and analyzes the resulting output and updates the generation request accordingly. The steps involved in Calliope’s interactive workflow are shown in
 
+In terms of co-creation, the user can configure multiple attribute controls for generation .
 
 Generation of new MIDI excerpts can be done in batch and can be combined with active playback listening for an enhanced assisted-composition workflow.
-
-
-We present a demonstration of the system, its features, generative parameters and describe the co-creative workflows that it affords.
-We presented the Calliope system, a co-creative interface for multi-track music generation
-We situated our system with respect to other existing CAC systems and discussed the co-creative aspect of the system along with the compositional workflow it affords.
 
 The aim is to enable users to effectively co-create with a generative system.
 
 With the rise of artificial intelligence in recent years, there has been a rapid increase in its application towards creative domains, including music. 
 
-also APOLLO
 
 
 Many machine learning-based (ML) systems have been developed for computer-assisted composition including:
