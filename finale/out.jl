@@ -113,7 +113,23 @@ and generate partial or complete multi-track content using the Multi-Track Music
 Awesome. I tried to use it with each of the .mid HW files for a number of instruments and every time it would not generate anything or supply one drawn out final note in the last bar (free note density, broad range of batch sizes). MIDI files were never generated in the frame to the right on Firefox or Chrome.
 Replicating the example on the home page stalled both browsers. The MIDI files uploaded more than 3 minites of Bach. It stalled for more than half of the requests for 4 or 8 bars, some with infilling, others without. Generation requests did yield MIDI files.
 
-That's just a taste of Callioe of Calliope's taste with some MIDI files for some values of parameters named (instrument type, node density, polyphony range, note length range, bar selection within a piece).
+That's just a taste of Callioe of Calliope's taste with some MIDI files for some values of named parameters named (instrument type, node density, polyphony range, note length range, bar selection within a piece).
+Global Params
+- Temperature ∈ Float[0.8, 1.2]: how much the structure of the generated
+MIDI content is closer (conservative) or farther (experimental) to what the MMM model is most likely to generate
+- Polyphony Hard Limit ∈ 1:6, maximum number of simultaneous notes 
+- Percentage ∈ 0:100, controls how much of the existing MIDI content is preserved or replaced by the generation.
+- Model Dimensions ∈ 1:8, dimension of the model in bars
+- Tracks per Step ∈ 1:8, tracks processed at each generation step, default 4.
+- Bars per Step ∈ 1:8, bars processed in each track at each generative step,default 2.
+- Max Steps ∈ 0:8, maximum number of generation steps, ignored when 0.
+- Tempo is a positive integer, tempo for the generated output.
+Track Parameters
+- Instrument Type, one of the 128 GM instruments, which are partitioned into 8 groups.
+- Note Density ∈ 0:10, number of notes generated per bar size.
+- Polyphony Range ∈ 0:6, the number range of simultaneous notes used by the model for generation, a soft constraint.
+- Note Duration Range ∈ {Any, 1/32, 1/16, 1/8, 1/4, 1/2, Whole}
+
 They do not describe the generative mechanism in the paper but you can read about it (here)[https://github.com/AI-Guru/MMM-JSB/tree/main], tagged
 
 > (MMM: Exploring Conditional Multi-Track Music Generation with the Transformer and the Johann Sebastian Bach Chorales Dataset)[https://github.com/AI-Guru/MMM-JSB/tree/main#mmm-exploring-conditional-multi-track-music-generation-with-the-transformer-and-the-johann-sebastian-bach-chorales-dataset]
@@ -306,6 +322,7 @@ Randomness:
 If its not fixed under equivalent variation, sorry pal...
 - RGB,RBG,GRB,BGR,BRG,GBR 
 - Patch Map
+- percepuality of permuting certain channels at certain times in life
 
 
 
@@ -389,6 +406,9 @@ Issue 2, Fall 2022, Pages 213–230,
 [https://doi.org/10.1093/mts/mtac003](https://doi.org/10.1093/mts/mtac003)
 
 
+Treatise on Musical Objects: An Essay across Disciplines
+By Pierre Schaeffer
+
 # Reflection
 I should learn how to build my own (computer) hardware.
-Instagram Poll: DO YOUR DREAMS HAVE SOUND?
+Instagram Poll: DO YOUR DREAMS HAVE SOUND? 59 Yes and 7 No.
