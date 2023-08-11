@@ -162,8 +162,8 @@ logger.info(model_config)
 model = GPT2LMHeadModel(model_config)
 ```
 What is GPT2?
-> It’s a causal (unidirectional) transformer pretrained using language modeling on a very large corpus of ~40 GB of text data.[^https://huggingface.co/docs/transformers/model_doc/gpt2]
-The abstract of the paper Language Models are Unsupervised Multitask Learners by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskeve is
+> It’s a causal (unidirectional) transformer pretrained using language modeling on a very large corpus of ~40 GB of text data.[^GPT2]
+The abstract of *Language Models are Unsupervised Multitask Learners* by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskeve reads
 > GPT-2 is a large transformer-based language model with 1.5 billion parameters, trained on a dataset[1] of 8 million web pages. GPT-2 is trained with a simple objective: predict the next word, given all of the previous words within some text. The diversity of the dataset causes this simple goal to contain naturally occurring demonstrations of many tasks across diverse domains. GPT-2 is a direct scale-up of GPT, with more than 10X the parameters and trained on more than 10X the amount of data.
 They model the data at a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or describe the bit depth of the 1.5 Billion parameters.
 Wait what is the data again? ~40 GB of text.
@@ -228,8 +228,11 @@ oh yeah and wiggling sample to more useful and percepually dimilar fake sampling
     -> booling with bools, bool tiles
 
 
- 
-
+q = BitArray([0 1;1 0])
+w = BitArray([0 1 0;0 0 1;1 0 0])
+r = BitArray([0 1 0 0 0;0 0 1 0 0;0 0 0 1 0;0 0 0 0 1;1 0 0 0 0])
+y = BitArray([0 1 0 0 0 0 0;0 0 1 0 0 0 0;0 0 0 1 0 0 0;0 0 0 0 1 0 0;0 0 0 0 0 1 0;0 0 0 0 0 0 1;1 0 0 0 0 0 0])
+Q = []
 
 
   they defin
@@ -377,6 +380,7 @@ https://www.spectromusic.com/writing-with-sonova/
 
 
 
+
 []: Annie Dillard. Pilgrim at Tinker Creek. 2007. HarperCollins Publishers Inc.
 []: Jim Heckroth. Tutorial on MIDI and Music Synthesis. Revised April 2006. MIDI Manufacturers Association.
 []: Paul D Lehrman. What is MIDI?. 2017
@@ -388,8 +392,10 @@ https://people.ucsc.edu/~dej/migrated/Ewha%20Materials/RHYTHM/Reich.Writings.pdf
 []: Dennis Smalley. Space-form and the acousmatic image. Organised Sound, Volume 12, Issue 1, April 2007, Pages 35-58. https://doi.org/10.1017/S1355771807001665
 []: Manuella Blackburn. The Visual Sound-Shapes of Spectromorphology: an illustrative guide to composition. Organised Sound, Volume 16 , Issue 1: Denis Smalley: his influence on the theory and practice of electroacoustic music , April 2011, Pages 5-13. https://doi.org/10.1017/S1355771810000385 
 []: BT.709 : Parameter values for the HDTV standards for production and international programme exchange. https://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.709-6-201506-I!!PDF-E.pdf
-[^Calliope]: Renaud Bougueng Tchemeube, Jeff Ens, Philippe Pasquier. Calliope: An Online Generative Music System for Symbolic Multi-Track
-Composition. Pages 251-255. https://computationalcreativity.net/iccc22/wp-content/uploads/2022/08/ICCC22_proceedings.pdf
+[^Calliope]: Renaud Bougueng Tchemeube, Jeff Ens, Philippe Pasquier. Calliope: An Online Generative Music System for Symbolic Multi-Track Composition. Pages 251-255. https://computationalcreativity.net/iccc22/wp-content/uploads/2022/08/ICCC22_proceedings.pdf
+[^GPT2]:OpenAI GPT2. Hugging Face. Accessed August 9 2023. https://huggingface.co/docs/transformers/model_doc/gpt2
+[^MMMgh]: https://github.com/AI-Guru/MMM-JSB/tree/main
+
 
 Jason Yust, Steve Reich’s Signature Rhythm and an Introduction to Rhythmic
 Qualities, Music Theory Spectrum, Volume 43, Issue 1, Spring 2021, Pages 74–90,
