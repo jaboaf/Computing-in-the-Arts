@@ -1,0 +1,58 @@
+import WAV
+import WAV.wavplay
+
+wavplay(V::Vector{Complex where,fs::Real) = wavplay([real.(V) imag.(V)],fs)
+
+read!(i,4) == b"RIFF"
+
+
+# [60000:100000],48000 
+frogg = wavread("wav/froggg.wav",format="native");
+
+# [100_000:225_000,300_000:410_000],48000
+# 300_000:365_000 just firework
+froggerworks = wavread("wav/froggerworks.wav",format="native");
+
+# 5_000:40000, 48000
+# can go higher ~ 60k and down to 20 or 30k
+agua = wavread("wav/ludloville water.wav",format="native");
+
+#
+#1:110000,220_000:340000,
+# note first part has two soft high pitched chirps at the end that have a nice aura and lil echo
+chipchirp = wavread("wav/rapid chirp strait.wav",format="native");
+#THIS ACTUALLY GOES HARD
+wavplay(chipchirp[1][220000:390000],3000)
+[79000:111000,[2000,6000]]
+# faint owl at 120000:220000 gonna have to work that out
+
+
+hyjamhy = wavread("wav/hydraulic jack hammer hydraulic.wav",format="native");
+# blump @ 113000:123_000 ~ 2k - 12k
+# tempo expand and retrract around 200_000:300_000 @ mids and high highs ~100k
+
+willy = wavread("wav/willy are you a transformer.wav",format="native");
+# 20_000:200_000 pretty solid, voice kinda funny around 35k and like alvin and the chipmunks when you gohigh
+
+gramjoing = wavread("wav/graham banjoing.wav",format="native");
+# 350_000:end really nice lows
+# like the misses here 140000:360_000
+# background water
+
+drillclank = wavread("wav/construction drillings and a clank.wav",format="native")
+# 100000:150000 @ typical and lows 9000 like a train
+# clank is here 215000:250000
+# tempo rev throttle gere 420000:500000
+
+# lil bird harmonysis.m4a
+# 50 West 2 copy.m4a
+
+
+
+pc4 =  wavread("wavs/piano-C4.wav",format="native");
+pc5 =  wavread("wavs/piano-C5.wav",format="native");
+pc6 =  wavread("wavs/piano-C6.wav",format="native");
+
+tc4 =  wavread("wavs/trumpet-C4.wav",format="native");
+tc5 =  wavread("wavs/trumpet-C5.wav",format="native");
+tc6 =  wavread("wavs/trumpet-C6.wav",format="native");

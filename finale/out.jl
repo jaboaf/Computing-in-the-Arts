@@ -165,17 +165,23 @@ What is GPT2?
 > It’s a causal (unidirectional) transformer pretrained using language modeling on a very large corpus of ~40 GB of text data.[^GPT2]
 The abstract of *Language Models are Unsupervised Multitask Learners* by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskeve reads
 > GPT-2 is a large transformer-based language model with 1.5 billion parameters, trained on a dataset[1] of 8 million web pages. GPT-2 is trained with a simple objective: predict the next word, given all of the previous words within some text. The diversity of the dataset causes this simple goal to contain naturally occurring demonstrations of many tasks across diverse domains. GPT-2 is a direct scale-up of GPT, with more than 10X the parameters and trained on more than 10X the amount of data.
-They model the data at a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or describe the bit depth of the 1.5 Billion parameters.
-Wait what is the data again? ~40 GB of text.
-> 4 * 10^10 / (1.5 * 10^9) = 8 * 10 / 3 = 80/3
-A parameter has got to be bit or are we just fooling around p a r a m e t e r s. I promise ot be fair! Suppose k is the maximum number of parameter values that (when substitued) do not separate points in the remaining parameters ( of which there are 1.5*10^9 - k).
+They model the data as a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or a parameter estimation procedure.
+I wonder what the parameter space looks like.
 
+Wait what is the data again? ~40 GB of text. 
+> 4 * 10^10 * 8 / (1.5 * 10^9) = 8 * 10 * 8 / 3 = 640/3
+A parameter has got to vary at least a bit. Right?
+
+I wonder what the parameter space is and the number of values
+
+So bits of parametersthe ratio  ratio is downhill from 320/3
+Suppose k is the maximum number of parameter values that (when substitued) do not separate points in the remaining parameters ( of which there are 1.5*10^9 - k).
     consider
         80*8 / (3 * 2^(1.5*10^9 - k) )
         we or at least i don't know probability function (maybe someone else does?)
         so k is unknown ! who knows?
         who cares?
-        the expression is expressive enought for me
+        the expression is expressive enough for me
     you should prolly fiddle with the web appliation (here)[https://metacreation.net/calliope/] to get a sense of the calliber.
 This might be a good time to mention that the Standard MIDI Files 1.0 specifies that:
 ```
@@ -207,13 +213,19 @@ So:
  -so <Track Chunk> is between 10 and 8+2^32-1 bytes
 -if <format> is 00 01 or 00 02 then
  -we have one track (hence, one or more)
- -no more than 2^16 - 1 tracks (because <length> in <Track Chunk> is 16 bits)
+ -no more than 2^16 - 1 tracks (because <ntrks> is 16 bits)
  -so between 10 and (8+2^32-1)(2^16-1) = 2^48 - 2^32 + 2^19 - 2^16 - 2^3 + 1 = 281_470_682_202_105 bytes
  -if <format> is 00 01 then tracks are 'simultaneous' (interpreted as aligned & unordered)
  -if <format> is 00 02 then tracks are 'sequentially independent' (interpreted as any-ordered)
 -in any format
  -permuting ~identical track chunks yields the same file
- -rearranging whole track chunks within a file yields an equivalent file
+ -rearranging track chunks within a file yields an equivalent file
+ -the midi file developer guidelines specify some interpretation under General MIDI (GM) guidelines 
+Unital scalar extension
+unitary scalar exention <: Unital Scalar extention
+
+
+
 
 From here we go one of two or three directions
 "Symbolic"? MIDI drill down
@@ -232,7 +244,33 @@ q = BitArray([0 1;1 0])
 w = BitArray([0 1 0;0 0 1;1 0 0])
 r = BitArray([0 1 0 0 0;0 0 1 0 0;0 0 0 1 0;0 0 0 0 1;1 0 0 0 0])
 y = BitArray([0 1 0 0 0 0 0;0 0 1 0 0 0 0;0 0 0 1 0 0 0;0 0 0 0 1 0 0;0 0 0 0 0 1 0;0 0 0 0 0 0 1;1 0 0 0 0 0 0])
-Q = []
+q1 = BitArray(a==b for a in 1:2,b in 1:2 );q0 = q .* iq
+w1 = BitArray(a==b for a in 1:3,b in 1:3 );w0 = w .* iw
+r1 = BitArray(a==b for a in 1:5,b in 1:5 );r0 = r .* ir
+y1 = BitArray(a==b for a in 1:7,b in 1:7 );y0 = y .* iy
+Q=[
+q0 q1;
+q  q0]
+W=[
+w0 w1 w0;
+w0 w0 w1;
+w  w0 w0]
+R=[
+r0 r1 r0 r0 r0;
+r0 r0 r1 r0 r0;
+r0 r0 r0 r1 r0;
+r0 r0 r0 r0 r1;
+r  r0 r0 r0 r0]
+Y=[
+y0 y1 y0 y0 y0 y0 y0;
+y0 y0 y1 y0 y0 y0 y0;
+y0 y0 y0 y1 y0 y0 y0;
+y0 y0 y0 y0 y1 y0 y0;
+y0 y0 y0 y0 y0 y1 y0;
+y0 y0 y0 y0 y0 y0 y1;
+y  y0 y0 y0 y0 y0 y0]
+
+
 
 
   they defin
