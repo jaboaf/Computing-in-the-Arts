@@ -1,9 +1,9 @@
 import WAV
-import WAV.wavplay
+import WAV:wavplay,wavread
 
-wavplay(V::Vector{Complex where,fs::Real) = wavplay([real.(V) imag.(V)],fs)
+wavplay(V::Vector{<:Complex},fs::Real) = wavplay([real.(V) imag.(V)],fs)
 
-read!(i,4) == b"RIFF"
+#read!(i,4) == b"RIFF"
 
 
 # [60000:100000],48000 
@@ -35,9 +35,10 @@ willy = wavread("wav/willy are you a transformer.wav",format="native");
 # 20_000:200_000 pretty solid, voice kinda funny around 35k and like alvin and the chipmunks when you gohigh
 
 gramjoing = wavread("wav/graham banjoing.wav",format="native");
-# 350_000:end really nice lows
+# 350_000:end really nice lows 10900,9300,9900, 7000,6300,5100,4100
 # like the misses here 140000:360_000
 # background water
+# MAP STATICS TO some agua
 
 drillclank = wavread("wav/construction drillings and a clank.wav",format="native")
 # 100000:150000 @ typical and lows 9000 like a train
@@ -47,12 +48,5 @@ drillclank = wavread("wav/construction drillings and a clank.wav",format="native
 # lil bird harmonysis.m4a
 # 50 West 2 copy.m4a
 
-
-
-pc4 =  wavread("wavs/piano-C4.wav",format="native");
-pc5 =  wavread("wavs/piano-C5.wav",format="native");
-pc6 =  wavread("wavs/piano-C6.wav",format="native");
-
-tc4 =  wavread("wavs/trumpet-C4.wav",format="native");
-tc5 =  wavread("wavs/trumpet-C5.wav",format="native");
-tc6 =  wavread("wavs/trumpet-C6.wav",format="native");
+T = [([ chipchirp[1][220000:349999];chipchirp[1][305000:390000] + chipchirp[1][220000:390000][1:2:end]],3000)]
+(repeat(hyjamhy[1][115000:120_000],18),12000)
