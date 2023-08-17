@@ -8,11 +8,13 @@ CD-DA bits per sector # 75sectors = 1 s
 
 We just couldn't get our stage right entry correct.
 
-The first two steps were on the balls of each foot, the third had to secure a demi-PLEIA while the other foot, pointed and turned out, swept forward to knee hight faster than we demi-plied so un-plieing and flexing our planted calves sprung our planted heels off the ground and brought the pointed foot to the spot it should land on count 4... as the first step of the same phrase, but this time with the oppositite feet.
+The first two steps were on the balls of each foot, the third had to secure a demi-PLEIA while the other foot, pointed and turned out, swept forward to knee hight faster than we demi-plied so un-plieing and flexing our planted calves sprung the heels beneath them off the ground and brought the pointed foot to the spot it should land on count 4... as the first step of the same phrase, but this time with the oppositite feet.
 
 Tight spacing stole a foot-level peripheral, making syncing-up a blind art and any departure a sore thumb. Our last practice before stage rehersal ended with the entry tune on repeat and eyes glued to the ground.
 
 That– is the last time I heard music.
+
+RA I wonder if those street hosers spray humans.
 
 After a vacation love affair, a few years later, I really started listening to music; or at least to *those* tracks on *that* playlist. So it must've been after that, but before 2018 when I began feeling music. Or maybe it was 2018, cause one day that Summer I stepped and twirled, hopped and bopped, and sang dangled and floated for 19 miles.
 
@@ -36,11 +38,13 @@ Many do play aloud musical things. Yet, few, play.
 If blessed to see one playing, what do we mean by that?
 At some point we definatley do sense. In what sense?
 
-I wonder because not much else cuts across a partition like musical things: ebbing in the woeful, vibrant among the intimate, and a durable pulse through and throughout community. It sure seems natural– not merely human. And we have yet to see a the greater part of a century globally offering the option to record, playback, copy, edit, and transmit audio and visual matrial.
+I wonder. Not much else cuts across a partition like musical things: ebbing in the woeful, vibrant among the intimate, and a durable pulse through and throughout community. It sure seems natural– not merely human. And we have yet to see a the greater part of a century globally offering the option to record, playback, copy, edit, and transmit audio and visual matrial.
+
+RA I asked the man what he packed in his sparkly lunch box, he said its name was guicci, never heard of that dish before.
 
 The effect is undisputably generally positive. Far beyond that– people deeply appreciate and value musical works. How much so is a spectacle:
 
-    At the end of 2021, Bruce Springsteen exchanged master recordings and publishing rights to 20 studio albums with Sony for an estimated $500,000,000. Suppose: there are 20 tracks per album, tracks and their associated rights may be totally ordered by dollar value, and the dollar value of a track with its associated rights is proportional to 1 divided by its rank. And these values partition the total of $500,000,000.
+    At the end of 2021, Bruce Springsteen exchanged master recordings and publishing rights to 20 studio albums with Sony for an estimated $500,000,000. Imagine there are 20 tracks per album, tracks and their associated rights may be totally ordered by dollar value, and the dollar value of a track with its associated rights is proportional to 1 divided by its rank. And these values partition the total of $500,000,000.
 
     The highest value track is:
         187046829073114601650818088978393541681209145313523704295048172193984970320336574588961640760313676135013142307766553383804638697532241829188594060015362048530542880992000 // 1228884515967872712251672909004982497901388975685728237120075555522246093340961692523451736163237183161567142377749856340898436843471517588948954743006778882051196591337071
@@ -61,7 +65,7 @@ DUMP:
 Are you sure about that? In "What is MIDI?" published by the MIDI Association, Lehrman writes,
 > It is not "music", in that a set of MIDI commands is not the same as a recording, say, of a French horn playing a tune. However, those commands can *describe* the horn performance in such a way that a device receiving them–such as a synthesizer–can *reconstruct* the horn tune with perfect accuracy.
 
-**A French horn playing a tune!** Awesome. Anyways, in the spirit and use of MIDI, I'm sure(-ish). In order for MIDI-file distribution of audio to be on par with digital audio, devices must yeild audio output that is identical or perceptually similar (the -ish) to that produced using digital audio.
+**A French horn playing a tune**! Awesome. Anyways, in the spirit and use of MIDI, I'm sure(-ish). In order for MIDI-file distribution of audio to be on par with digital audio, devices must yeild audio output that is identical or perceptually similar (the -ish) to that produced using digital audio.
 
 MEH: what is a (horn) tune?  How do we know its reconstruction, accurate or not? DOT DOT DOT]
 
@@ -96,7 +100,7 @@ There are plently of computer music systems. Each may split into components whic
 
 Don't impart that on domain of the above labelling scheme. Starting with 1, MIDI data depenence, its clear digital-audio-workstations-like-things, sleek or dank, aren't forgotted. Computer music systems going 'beyond' by accomanying scores or performances programmatically earn more research attention. One presented at the Thirteenth International Conference on Computational Creativity is *Calliope: An Online Generative Music System for Symbolic Multi-Track Composition*[^Calliope]. 
 
-> We presented the Calliope system, a co-creative interface for multi-track music generation. We presented its features in- cluding the ability to view and play MIDI files, the ability to select bars to guide partial generation, and complete set of global (model-level) and local (track-specific) controls and how their combination allows users to tackle a broad range of compositional tasks. We situated our system with respect to other existing CAC systems and discussed the co-creative aspect of the system along with the compositional workflow it affords.
+> We presented the Calliope system, a co-creative interface for multi-track music generation. We presented its features including the ability to view and play MIDI files, the ability to select bars to guide partial generation, and complete set of global (model-level) and local (track-specific) controls and how their combination allows users to tackle a broad range of compositional tasks. We situated our system with respect to other existing CAC systems and discussed the co-creative aspect of the system along with the compositional workflow it affords.
 
 Also,
 > It is a web application
@@ -165,16 +169,13 @@ What is GPT2?
 > It’s a causal (unidirectional) transformer pretrained using language modeling on a very large corpus of ~40 GB of text data.[^GPT2]
 The abstract of *Language Models are Unsupervised Multitask Learners* by Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei and Ilya Sutskeve reads
 > GPT-2 is a large transformer-based language model with 1.5 billion parameters, trained on a dataset[1] of 8 million web pages. GPT-2 is trained with a simple objective: predict the next word, given all of the previous words within some text. The diversity of the dataset causes this simple goal to contain naturally occurring demonstrations of many tasks across diverse domains. GPT-2 is a direct scale-up of GPT, with more than 10X the parameters and trained on more than 10X the amount of data.
-They model the data as a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or a parameter estimation procedure.
-I wonder what the parameter space looks like.
+They model the data as a sequence of sequences of (UTF-8) symbols and assume that the sequences of (UTF-8) symbols are mutually independent. They mention a factorization of a probability function and do not write down a statistical model or a parameter estimation procedure. I wonder what the parameter space looks like.
 
 Wait what is the data again? ~40 GB of text. 
 > 4 * 10^10 * 8 / (1.5 * 10^9) = 8 * 10 * 8 / 3 = 640/3
 A parameter has got to vary at least a bit. Right?
 
-I wonder what the parameter space is and the number of values
-
-So bits of parametersthe ratio  ratio is downhill from 320/3
+So bits of parameters ratio is downhill from 320/3
 Suppose k is the maximum number of parameter values that (when substitued) do not separate points in the remaining parameters ( of which there are 1.5*10^9 - k).
     consider
         80*8 / (3 * 2^(1.5*10^9 - k) )
@@ -221,10 +222,38 @@ So:
  -permuting ~identical track chunks yields the same file
  -rearranging track chunks within a file yields an equivalent file
  -the midi file developer guidelines specify some interpretation under General MIDI (GM) guidelines 
+
+RA BORING
+RA WHATS YOUR FUCKING POINT
+
+Ion know man, just trying to think through what "Symbolic" (might've) meant or denoted or indicated in the title *Calliope: An Online Generative Music System for Symbolic Multi-Track Composition*. From the get-go its pretty clear this system cannot hear shit: it won't wobble if you wiggle the patchmap GM-acceptably and it don't budge if you blantantly fudge the patchmap. Clearly its a Calliope thing, but is that because it rests on GM MIDI as opposed to MIDI? Nope, the whole GM part of it is just a socialy useful narrowing of MIDI genericity.
+RA okay fine yeah but still
+So is everything made on MIDI without patchmap data, deaf?
+RA ... yes in that by definition sorta way
+I'm not so sure.
+RA IM SURE
+In Mono Mode: we can embedd 14 bits of LPCM on a channel
+- 2 7-bit places
+- e.g. (note,vel) -> vel*1^(note/128)
+In Poly Mode: we can embedd 896 bits of LPCM on a channel
+- 128 7-bit places
+- e.g. (note,vel) -> vel*128^note
+These are clearly very soft.
+RA okay fine but you gotta have fast enough ticks
+... ticks per quaver gets 15 bits
+... microseconds per quaver gets 24 bits
+
+C if you're not gonna fall in line with tradition
+C if you're gonna go digital
+C you might as well go direct.
+
+
+
+
 Unital scalar extension
 unitary scalar exention <: Unital Scalar extention
 
-
+jjj
 
 
 From here we go one of two or three directions
@@ -335,17 +364,6 @@ interactive computer music systems
 > Synthesizer Basics
     > Sounds
         > The different sounds that a synthesizer or sound generator can produce are sometimes called "patches", "programs", "algorithms", or "timbres". Programmable synthesizers commonly assign "program numbers" (or patch numbers) to each sound. ... The association of all patch numbers to all sounds is often referred to as a patch map.
-
-Conclude:
-In Mono Mode: we can embedd 14 bits of LPCM on a channel
-- 2 7-bit places
-- e.g. (note,vel) -> vel*128 + note
-In Poly Mode: we can embedd 896 bits of LPCM on a channel
-- 128 7-bit places
-- e.g. (note,vel) -> vel*128^note
-
-ticks per quaver is 15 bits
-microseconds per quaver is 24 bits
 
 
 
