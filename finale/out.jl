@@ -471,6 +471,10 @@ Issue 2, Fall 2022, Pages 213–230,
 Treatise on Musical Objects: An Essay across Disciplines
 By Pierre Schaeffer
 
+On Sonic Art
+https://monoskop.org/images/2/21/Wishart_Trevor_On_Sonic_Art.pdf
+
 # Reflection
 I should learn how to build my own (computer) hardware.
 Instagram Poll: DO YOUR DREAMS HAVE SOUND? 59 Yes and 7 No.
+
